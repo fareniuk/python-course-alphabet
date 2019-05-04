@@ -111,9 +111,9 @@ class Garage:
     def remove(self, car):
         if car in self.cars:
             self.cars.remove(car)
-            print(f"Car: {car} removed from garage")
+            print(f"Car: '{car}' removed from garage")
         else:
-            print(f"There is no {car} in this garage")
+            print(f"There is no '{car}' in this garage")
 
     def hit_hat(self):
         return sum(car.price for car in self.cars)
