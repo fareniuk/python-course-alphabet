@@ -3,7 +3,6 @@
 Звязкок наступний один колекціонер може мати багато гаражів.
 В одному гаражі може знаходитися багато автомобілів.
 
-
 """
 from __future__ import annotations
 import uuid
@@ -15,7 +14,7 @@ print(TOWNS)
 
 
 class Car:
-    '''
+    """
     Автомобіль має наступні характеристики:
     price - значення типу float. Всі ціни за дефолтом в одній валюті.
     type - одне з перечисленних значеннь з CARS_TYPES в docs.
@@ -29,13 +28,19 @@ class Car:
 
     Автомобіль має метод заміни номеру.
     номер повинен відповідати UUID
-    '''
+    """
     def __init__(self, price: float, car_type: CARS_TYPES, producer: CARS_PRODUCER, mileage: float):
         self.price = price
-        self.car_type = car_type if car_type in CARS_TYPES else print("Bad car type")
-        self.producer = producer
         self.number = uuid.uuid4()
         self.mileage = mileage
+        if producer in CARS_PRODUCER:
+            self.producer = producer
+        else:
+            raise Exception("Bad Producer value")
+        if car_type in CARS_TYPES:
+            self.car_type = car_type
+        else:
+            raise Exception("Bad car type")
     pass
 
     def __str__(self):
@@ -66,8 +71,9 @@ class Car:
     def __gt__(self, other: Car):
         return self.price > other.price
 
+
 class Garage:
-    '''
+    """
     Гараж має наступні характеристики:
 
     town - одне з перечислениз значеннь в TOWNS
@@ -80,12 +86,15 @@ class Garage:
     add(car) -> Добавляє машину в гараж, якщо є вільні місця
     remove(cat) -> Забирає машину з гаражу.
     hit_hat() -> Вертає сумарну вартість всіх машин в гаражі
-    '''
+    """
     def __init__(self, town: TOWNS, cars: [], places: int, owner = None):
-        self.town = town
         self.cars = cars
         self.places = places
         self.owner = owner if owner else None
+        if town in TOWNS:
+            self.town = town
+        else:
+            raise Exception("Bad Town")
 
     def __str__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
@@ -109,8 +118,9 @@ class Garage:
     def hit_hat(self):
         return sum(car.price for car in self.cars)
 
+
 class Cesar:
-    '''
+    """
     name - значення типу str. Його ім'я
     garages - список з усіх гаражів які належать цьому Колекціонеру. Кількість гаражів за замовчуванням - 0
     register_id - UUID; Унікальна айдішка Колекціонера.
@@ -123,7 +133,7 @@ class Cesar:
     Якщо вільних місць немає повинне вивести повідомлення про це.
 
     Колекціонерів можна порівнювати за ціною всіх їх автомобілів.
-    '''
+    """
     def __init__(self, name: str, garages=[]):
         self.name = name
         self.garages = garages
