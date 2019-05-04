@@ -86,7 +86,7 @@ class Garage:
         self.town = town
         self.cars = cars
         self.places = places
-        self.owner = uuid.uuid4()
+        self.owner = owner if owner else None
 
     def __str__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
@@ -125,7 +125,7 @@ class Cesar:
 
     Колекціонерів можна порівнювати за ціною всіх їх автомобілів.
     '''
-    def __init__(self, name: str, garages=None):
+    def __init__(self, name: str, garages=[]):
         self.name = name
         self.garages = garages
         self.register_id = uuid.uuid4()
