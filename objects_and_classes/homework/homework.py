@@ -106,14 +106,14 @@ class Garage:
         if len(self.cars) < self.places:
             self.cars.append(car)
         else:
-            print('No place available in ', self)
+            raise Exception('No place available in ', self)
 
     def remove(self, car):
         if car in self.cars:
             self.cars.remove(car)
             print(f"Car: '{car}' removed from garage")
         else:
-            print(f"There is no '{car}' in this garage")
+            raise Exception(f"There is no '{car}' in this garage")
 
     def hit_hat(self):
         return sum(car.price for car in self.cars)
