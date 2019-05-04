@@ -47,7 +47,6 @@ class Car:
 
     def change_number(self):
         self.number = uuid.uuid4()
-        return self.number
 
     def __le__(self, other: Car):
         return self.price <= other.price
@@ -103,9 +102,9 @@ class Garage:
     def remove(self, car):
         if car in self.cars:
             self.cars.remove(car)
-            print(f"car: {car} removed from garage")
+            print(f"Car: {car} removed from garage")
         else:
-            print(f"where is no {car} in this garage")
+            print(f"There is no {car} in this garage")
 
     def hit_hat(self):
         return sum(car.price for car in self.cars)
@@ -145,14 +144,19 @@ class Cesar:
     def cars_count(self):
         return sum(len(garage.cars) for garage in self.garages)
 
+    def place_available(self):
+        for i in self.garages:
+            if (i.places - len(i.cars)) > 0:
+                return True
+        return False
+
     def add_car(self, car: Car, garage=None):
-        if (garage is not None) and (garage in self.garages):
-            return garage.add(car) if car not in garage.cars else print("The car is already in the garage")
-        elif (garage is not None) and (garage not in self.garages):
+        if garage is None:
+            max(self.garages, key=lambda x: (x.places - len(x.cars))).add(car) if self.place_available() else print('if self.place_available():')
+        elif garage in self.garages:
+            garage.add(car) if car not in garage.cars else print("The car is already in the garage")
+        elif garage not in self.garages:
             print("You can not add a car to someone else's garage")
-            return None
-        else:
-            return max(self.garages, key=lambda x: (x.places - len(x.cars))).add(car)
 
     def __eq__(self, other: Cesar):
         return self.hit_hat() == other.hit_hat()
