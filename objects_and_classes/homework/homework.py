@@ -87,7 +87,7 @@ class Garage:
     remove(cat) -> Забирає машину з гаражу.
     hit_hat() -> Вертає сумарну вартість всіх машин в гаражі
     """
-    def __init__(self, town: TOWNS, cars: [], places: int, owner = None):
+    def __init__(self, town: TOWNS, cars: [], places: int, owner=None):
         self.cars = cars
         self.places = places
         self.owner = owner if owner else None
