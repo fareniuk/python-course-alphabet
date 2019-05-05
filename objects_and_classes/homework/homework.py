@@ -13,7 +13,7 @@ from constants import CARS_TYPES
 from constants import CARS_PRODUCER
 
 
-# This and other comparison operators are defined by
+# _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
 class Car:
@@ -110,7 +110,7 @@ class Garage:
         return sum(car.price for car in self.cars)
 
 
-# This and other comparison operators are defined by
+# _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
 class Cesar:
