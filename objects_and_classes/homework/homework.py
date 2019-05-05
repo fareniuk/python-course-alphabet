@@ -6,13 +6,13 @@
 """
 from __future__ import annotations
 import uuid
+import functools
 from constants import TOWNS
 from constants import CARS_TYPES
 from constants import CARS_PRODUCER
 
-print(TOWNS)
 
-
+@functools.total_ordering
 class Car:
     """
     Автомобіль має наступні характеристики:
@@ -53,8 +53,8 @@ class Car:
     def change_number(self):
         self.number = uuid.uuid4()
 
-    def __le__(self, other: Car):
-        return self.price <= other.price
+    #def __le__(self, other: Car):
+    #    return self.price <= other.price
 
     def __lt__(self, other: Car):
         return self.price < other.price
@@ -62,14 +62,14 @@ class Car:
     def __eq__(self, other: Car):
         return self.price == other.price
 
-    def __ne__(self, other: Car):
-        return self.price != other.price
+    #def __ne__(self, other: Car):
+    #    return self.price != other.price
 
-    def __ge__(self, other: Car):
-        return self.price >= other.price
+    #def __ge__(self, other: Car):
+    #    return self.price >= other.price
 
-    def __gt__(self, other: Car):
-        return self.price > other.price
+    #def __gt__(self, other: Car):
+    #    return self.price > other.price
 
 
 class Garage:
@@ -118,7 +118,7 @@ class Garage:
     def hit_hat(self):
         return sum(car.price for car in self.cars)
 
-
+@functools.total_ordering
 class Cesar:
     """
     name - значення типу str. Його ім'я
@@ -171,17 +171,17 @@ class Cesar:
     def __eq__(self, other: Cesar):
         return self.hit_hat() == other.hit_hat()
 
-    def __le__(self, other: Cesar):
-        return self.hit_hat() <= other.hit_hat()
+    #def __le__(self, other: Cesar):
+    #    return self.hit_hat() <= other.hit_hat()
 
     def __lt__(self, other: Cesar):
         return self.hit_hat() < other.hit_hat()
 
-    def __ne__(self, other: Cesar):
-        return self.hit_hat() != other.hit_hat()
+    #def __ne__(self, other: Cesar):
+    #    return self.hit_hat() != other.hit_hat()
 
-    def __ge__(self, other: Cesar):
-        return self.hit_hat() >= other.hit_hat()
+    #def __ge__(self, other: Cesar):
+    #    return self.hit_hat() >= other.hit_hat()
 
-    def __gt__(self, other: Cesar):
-        return self.hit_hat() > other.hit_hat()
+    #def __gt__(self, other: Cesar):
+    #    return self.hit_hat() > other.hit_hat()
