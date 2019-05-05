@@ -7,11 +7,14 @@
 from __future__ import annotations
 import uuid
 import functools
+import random
 from constants import TOWNS
 from constants import CARS_TYPES
 from constants import CARS_PRODUCER
 
 
+# This and other comparison operators are defined by
+# @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
 class Car:
     """
@@ -53,23 +56,11 @@ class Car:
     def change_number(self):
         self.number = uuid.uuid4()
 
-    #def __le__(self, other: Car):
-    #    return self.price <= other.price
-
     def __lt__(self, other: Car):
         return self.price < other.price
 
     def __eq__(self, other: Car):
         return self.price == other.price
-
-    #def __ne__(self, other: Car):
-    #    return self.price != other.price
-
-    #def __ge__(self, other: Car):
-    #    return self.price >= other.price
-
-    #def __gt__(self, other: Car):
-    #    return self.price > other.price
 
 
 class Garage:
@@ -88,7 +79,7 @@ class Garage:
     hit_hat() -> Вертає сумарну вартість всіх машин в гаражі
     """
     def __init__(self, town: TOWNS, cars: [], places: int, owner=None):
-        self.cars = cars
+        self.cars = cars if cars else []
         self.places = places
         self.owner = owner if owner else None
         if town in TOWNS:
@@ -118,6 +109,9 @@ class Garage:
     def hit_hat(self):
         return sum(car.price for car in self.cars)
 
+
+# This and other comparison operators are defined by
+# @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
 class Cesar:
     """
@@ -134,9 +128,9 @@ class Cesar:
 
     Колекціонерів можна порівнювати за ціною всіх їх автомобілів.
     """
-    def __init__(self, name: str, garages=[]):
+    def __init__(self, name: str, garages=None):
         self.name = name
-        self.garages = garages
+        self.garages = garages if garages else []
         self.register_id = uuid.uuid4()
 
     def __str__(self):
@@ -171,17 +165,45 @@ class Cesar:
     def __eq__(self, other: Cesar):
         return self.hit_hat() == other.hit_hat()
 
-    #def __le__(self, other: Cesar):
-    #    return self.hit_hat() <= other.hit_hat()
-
     def __lt__(self, other: Cesar):
         return self.hit_hat() < other.hit_hat()
 
-    #def __ne__(self, other: Cesar):
-    #    return self.hit_hat() != other.hit_hat()
 
-    #def __ge__(self, other: Cesar):
-    #    return self.hit_hat() >= other.hit_hat()
+if __name__ == "__main__":
+    cesar_id = uuid.uuid4()
 
-    #def __gt__(self, other: Cesar):
-    #    return self.hit_hat() > other.hit_hat()
+    garages = []
+    for _ in range(2):
+        garage = Garage(
+            cars=[],
+            town=random.choice(TOWNS),
+            places=5,
+            owner=cesar_id
+        )
+        garages.append(garage)
+
+    cesar = Cesar('cesar', garages)
+
+    cars = []
+    for _ in range(10):
+        car = Car(
+            car_type=random.choice(CARS_TYPES),
+            producer=random.choice(CARS_PRODUCER),
+            price=round(random.uniform(1, 100000), 2),
+            mileage=round(random.uniform(1, 100000), 2)
+        )
+        cesar.add_car(car, random.choice(garages))
+
+    print(cesar)
+    print(cesar.garages[0])
+    print('hit_hat garages[0] =', cesar.garages[0].hit_hat())
+    print(cesar.garages[1])
+    print('hit_hat garages[1] =', cesar.garages[1].hit_hat())
+    print('hit_hat cesar = ', cesar.hit_hat())
+    cesar2 = Cesar('cesar2')
+    print(cesar2)
+    print('hit_hat cesar2 = ', cesar2.hit_hat())
+    print('cesar > cesar2 ', cesar > cesar2)
+    print('cesar.сars_count = ', cesar.cars_count())
+    cesar.garages[0].remove(cesar.garages[0].cars[0])
+    print('cesar.сars_count = ', cesar.cars_count())
