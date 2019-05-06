@@ -8,9 +8,7 @@ from __future__ import annotations
 import uuid
 import functools
 import random
-from constants import TOWNS
-from constants import CARS_TYPES
-from constants import CARS_PRODUCER
+from constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
 
 # _le_ and other comparison operators are defined by
@@ -39,11 +37,11 @@ class Car:
         if producer in CARS_PRODUCER:
             self.producer = producer
         else:
-            raise Exception("Bad Producer value")
+            raise Exception("Bad Producer value, producer value must be: ", CARS_PRODUCER)
         if car_type in CARS_TYPES:
             self.car_type = car_type
         else:
-            raise Exception("Bad car type")
+            raise Exception("Bad car type, car type must be: ", CARS_TYPES)
     pass
 
     def __str__(self):
@@ -51,7 +49,8 @@ class Car:
             f" number='{self.number}', mileage='{self.mileage}')"
 
     def __repr__(self):
-        return self.__str__()
+        return f"Car(car_type='{self.car_type}', producer='{self.producer}', price='{self.price}'," \
+            f" number='{self.number}', mileage='{self.mileage}')"
 
     def change_number(self):
         self.number = uuid.uuid4()
@@ -85,13 +84,13 @@ class Garage:
         if town in TOWNS:
             self.town = town
         else:
-            raise Exception("Bad Town")
+            raise Exception("Bad Town name, available town: ", TOWNS)
 
     def __str__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
 
     def __repr__(self):
-        return self.__str__()
+        return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
 
     def add(self, car):
         if len(self.cars) < self.places:
@@ -137,7 +136,7 @@ class Cesar:
         return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
 
     def __repr__(self):
-        return self.__str__()
+        return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
 
     def hit_hat(self):
         return sum(garage.hit_hat() for garage in self.garages)
