@@ -8,9 +8,7 @@ from __future__ import annotations
 import uuid
 import functools
 import random
-from constants import TOWNS
-from constants import CARS_TYPES
-from constants import CARS_PRODUCER
+from constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
 
 # _le_ and other comparison operators are defined by
