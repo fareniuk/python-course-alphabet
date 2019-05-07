@@ -25,6 +25,7 @@ if __name__ == "__main__":
     programmer = Programmer("Captain America")
     programmer.enough_coffee = True
     # Lets dump object to pickle
+    print(programmer.__getstate__())
     with open("data.txt", "wb") as file:
         pickle.dump(programmer, file)
 

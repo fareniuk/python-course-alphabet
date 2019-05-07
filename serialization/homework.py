@@ -19,6 +19,7 @@ import functools
 import random
 import json
 import pickle
+import codecs
 from ruamel.yaml import YAML
 from serialization.constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
@@ -83,15 +84,25 @@ class Car:
         with open(file_name, 'r') as file:
             return json.load(file, object_hook=Car.from_json)
 
-    def to_pickle(self):
-        return str(pickle.dump(self))
+    def __setstate__(self, state):
+        self.__dict__ = state
+
+    def __getstate__(self):
+        return self.__dict__
+
+    def pickle_to_string(self):
+        return codecs.encode(pickle.dumps(self), "base64").decode()
+
+    @staticmethod
+    def car_instance_from_string(pickle_str: str):
+        return pickle.loads(codecs.decode(pickle_str.encode(), "base64"))
 
     def pickle_to_file(self, file_name: str):
         with open(file_name, 'wb') as file:
             pickle.dump(self, file)
 
     @staticmethod
-    def pickle_from_file(file_name: str):
+    def car_from_pickle_file(file_name: str):
         with open(file_name, 'rb') as file:
             return pickle.load(file)
 
@@ -200,6 +211,7 @@ class Cesar:
 
 if __name__ == "__main__":
 
+
     car = Car(
         car_type=random.choice(CARS_TYPES),
         producer=random.choice(CARS_PRODUCER),
@@ -238,17 +250,20 @@ if __name__ == "__main__":
         print(e)
 
     print()
+    pk_str=car.pickle_to_string()
+    print(pk_str)
+    print(Car.car_instance_from_string(pk_str))
     print(type(car.json_to_string()), car.json_to_string())
     arg=car.json_to_string()
     res=car.сar_from_json_string(arg)
     print(type(res),res)
     print()
     print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
-    print(type(car.pickle_from_file("pickle.txt")), car.pickle_from_file("pickle.txt"))
+    print("pickle  ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
 #    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
     car.json_to_file("car.json")
     car.pickle_to_file("pickle.txt")
 #    car.yaml_to_file(car, "car.yaml")
     print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
-    print(type(car.pickle_from_file("pickle.txt")), car.pickle_from_file("pickle.txt"))
+    print("Pickle ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
 #    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
