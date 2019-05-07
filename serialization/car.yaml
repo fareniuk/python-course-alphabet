@@ -1,5 +1,6 @@
-car_type: Coupe
-producer: Ford
-price: 4019.28
-number: f6e38089-fce2-4da1-a6d9-d2464238f94f
-mileage: 31715.49
+Car:
+  car_type: Diesel
+  producer: Buick
+  price: 36835.77
+  number: afe95e56-9034-4796-84ee-fa02c1c3ead3
+  mileage: 47738.34

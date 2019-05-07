@@ -106,10 +106,15 @@ class Car:
         with open(file_name, 'rb') as file:
             return pickle.load(file)
 
+    def to_yaml(self):
+        data = {self.__class__.__name__ : {"car_type": self.car_type, "producer": self.producer, "price": self.price, "number": str(self.number),
+                "mileage": self.mileage}}
+        return data
+
     def yaml_to_file(self, file_name: str):
         yaml = YAML()
         with open(file_name, 'w') as file:
-            return yaml.dump(self.to_json(self), file)
+            return yaml.dump(self.to_yaml(), file)
 
     @staticmethod
     def yaml_from_file(file_name: str):
@@ -233,6 +238,6 @@ if __name__ == "__main__":
     car.json_to_file("car.json")
     car.pickle_to_file("pickle.txt")
     car.yaml_to_file("car.yaml")
-    print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
-    print("Pickle ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
+    print("JSON -->",type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
+    print("Pickle -->", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
+    print("Yaml -->",type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
