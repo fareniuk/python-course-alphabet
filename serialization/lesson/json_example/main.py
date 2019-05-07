@@ -1,9 +1,9 @@
 from pprint import pprint
 from copy import deepcopy
-from lesson.json_example.json_utils import JsonEncoder, json_hook
+from serialization.lesson.json_example.json_utils import JsonEncoder, json_hook
 import json
 
-from lesson.some_data import DATA
+from serialization.lesson.some_data import DATA
 
 
 def show_me(data: dict) -> None:

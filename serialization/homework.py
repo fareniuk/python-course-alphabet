@@ -109,7 +109,7 @@ class Car:
     def yaml_to_file(self, file_name: str):
         yaml = YAML()
         with open(file_name, 'w') as file:
-            yaml.dump(dict(self), file)
+            return yaml.dump(self.to_json(self), file)
 
     @staticmethod
     def yaml_from_file(file_name: str):
@@ -211,43 +211,12 @@ class Cesar:
 
 if __name__ == "__main__":
 
-
     car = Car(
         car_type=random.choice(CARS_TYPES),
         producer=random.choice(CARS_PRODUCER),
         price=round(random.uniform(1, 100000), 2),
         mileage=round(random.uniform(1, 100000), 2)
     )
-
-    print(car)
-    ser_pr = ''
-    # Should raise TypeError. Json does not know how to work with custom objects
-    try:
-        ser_pr = json.dumps(car)
-        print(ser_pr)
-    except TypeError as e:
-        print(e)
-
-    # Should work fine. Use custom json decoder
-    try:
-        ser_pr = json.dumps(car, default=Car.to_json)
-        print(type(ser_pr), ser_pr)
-    except TypeError as e:
-        print(e)
-
-    # Should not fault. But we will get dict instead of object
-    try:
-        load_pr = json.loads(ser_pr)
-        print(type(load_pr), load_pr)
-    except TypeError as e:
-        print(e)
-
-    # Should works fine. Use custom hook
-    try:
-        load_pr = json.loads(ser_pr, object_hook=Car.from_json)
-        print(type(load_pr), load_pr)
-    except TypeError as e:
-        print(e)
 
     print()
     pk_str=car.pickle_to_string()
@@ -260,10 +229,10 @@ if __name__ == "__main__":
     print()
     print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
     print("pickle  ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-#    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
+    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
     car.json_to_file("car.json")
     car.pickle_to_file("pickle.txt")
-#    car.yaml_to_file(car, "car.yaml")
+    car.yaml_to_file("car.yaml")
     print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
     print("Pickle ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-#    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
+    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
