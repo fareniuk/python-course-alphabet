@@ -18,7 +18,9 @@ import uuid
 import functools
 import random
 import json
-from constants import TOWNS, CARS_TYPES, CARS_PRODUCER
+import pickle
+from ruamel.yaml import YAML
+from serialization.constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
 
 # _le_ and other comparison operators are defined by
@@ -58,15 +60,51 @@ class Car:
         cr = Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
         return cr
 
+    def json_to_string(self):
+        try:
+            return json.dumps(self, default=Car.to_json)
+        except TypeError as e:
+            print(e)
+
     @staticmethod
-    def json_to_file(self):
-        with open("car.json", 'w') as file:
+    def сar_from_json_string(json_string: str):
+        try:
+            return json.loads(json_string, object_hook=Car.from_json)
+
+        except TypeError as e:
+            print(e)
+
+    def json_to_file(self, file_name: str):
+        with open(file_name, 'w') as file:
             json.dump(self.to_json(self), file, indent=4)
 
     @staticmethod
-    def json_from_file(file_name: str):
+    def instance_from_json_file(file_name: str):
         with open(file_name, 'r') as file:
             return json.load(file, object_hook=Car.from_json)
+
+    def to_pickle(self):
+        return str(pickle.dump(self))
+
+    def pickle_to_file(self, file_name: str):
+        with open(file_name, 'wb') as file:
+            pickle.dump(self, file)
+
+    @staticmethod
+    def pickle_from_file(file_name: str):
+        with open(file_name, 'rb') as file:
+            return pickle.load(file)
+
+    def yaml_to_file(self, file_name: str):
+        yaml = YAML()
+        with open(file_name, 'w') as file:
+            yaml.dump(dict(self), file)
+
+    @staticmethod
+    def yaml_from_file(file_name: str):
+        yaml = YAML()
+        with open(file_name, 'r') as file:
+            return yaml.load(file)
 
     def __repr__(self):
         return f"Car(car_type='{self.car_type}', producer='{self.producer}', price='{self.price}'," \
@@ -199,6 +237,18 @@ if __name__ == "__main__":
     except TypeError as e:
         print(e)
 
-    print(type(car.json_from_file("car.json")))
-    car.json_to_file(car)
-    print(car.json_from_file("car.json"))
+    print()
+    print(type(car.json_to_string()), car.json_to_string())
+    arg=car.json_to_string()
+    res=car.сar_from_json_string(arg)
+    print(type(res),res)
+    print()
+    print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
+    print(type(car.pickle_from_file("pickle.txt")), car.pickle_from_file("pickle.txt"))
+#    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
+    car.json_to_file("car.json")
+    car.pickle_to_file("pickle.txt")
+#    car.yaml_to_file(car, "car.yaml")
+    print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
+    print(type(car.pickle_from_file("pickle.txt")), car.pickle_from_file("pickle.txt"))
+#    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
