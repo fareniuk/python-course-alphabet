@@ -111,13 +111,22 @@ class Car:
                 "mileage": self.mileage}}
         return data
 
+    def yaml_to_string(self):
+        yaml = YAML()
+        return str(self.to_yaml())
+
+    @staticmethod
+    def instance_from_yaml_string(yaml_string: str):
+        yaml = YAML()
+        return yaml.load(yaml_string)
+
     def yaml_to_file(self, file_name: str):
         yaml = YAML()
         with open(file_name, 'w') as file:
             return yaml.dump(self.to_yaml(), file)
 
     @staticmethod
-    def yaml_from_file(file_name: str):
+    def instance_from_yaml_file(file_name: str):
         yaml = YAML()
         with open(file_name, 'r') as file:
             return yaml.load(file)
@@ -224,20 +233,16 @@ if __name__ == "__main__":
     )
 
     print()
-    pk_str=car.pickle_to_string()
-    print(pk_str)
-    print(Car.car_instance_from_string(pk_str))
-    print(type(car.json_to_string()), car.json_to_string())
-    arg=car.json_to_string()
-    res=car.сar_from_json_string(arg)
-    print(type(res),res)
+    print(type(car.yaml_to_string()), car.yaml_to_string())
+    st=car.yaml_to_string()
+    print(type(car.instance_from_yaml_string(st)),car.instance_from_yaml_string(st))
     print()
     print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
     print("pickle  ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-    print(type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
+    print(type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
     car.json_to_file("car.json")
     car.pickle_to_file("pickle.txt")
     car.yaml_to_file("car.yaml")
-    print("JSON -->",type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
+    print("JSON -->", type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
     print("Pickle -->", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-    print("Yaml -->",type(car.yaml_from_file("car.yaml")), car.yaml_from_file("car.yaml"))
+    print("Yaml -->",type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
