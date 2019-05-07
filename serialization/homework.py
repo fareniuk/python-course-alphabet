@@ -68,7 +68,6 @@ class Car:
         with open(file_name, 'r') as file:
             return json.load(file, object_hook=Car.from_json)
 
-
     def __repr__(self):
         return f"Car(car_type='{self.car_type}', producer='{self.producer}', price='{self.price}'," \
             f" number='{self.number}', mileage='{self.mileage}')"
