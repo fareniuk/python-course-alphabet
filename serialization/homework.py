@@ -63,6 +63,12 @@ class Car:
         with open("car.json", 'w') as file:
             json.dump(self.to_json(self), file, indent=4)
 
+    @staticmethod
+    def json_from_file(file_name: str):
+        with open(file_name, 'r') as file:
+            return json.load(file, object_hook=Car.from_json)
+
+
     def __repr__(self):
         return f"Car(car_type='{self.car_type}', producer='{self.producer}', price='{self.price}'," \
             f" number='{self.number}', mileage='{self.mileage}')"
@@ -194,4 +200,6 @@ if __name__ == "__main__":
     except TypeError as e:
         print(e)
 
+    print(type(car.json_from_file("car.json")))
     car.json_to_file(car)
+    print(car.json_from_file("car.json"))
