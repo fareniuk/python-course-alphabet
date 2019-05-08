@@ -1,0 +1,5 @@
+{
+    "name": "cesar",
+    "register_id": "None",
+    "garages": "[Garage(town='London', places='5', owner='91579141-9fcb-47f4-af76-5dce792537bc', cars='[Car(car_type='Van', producer='Bugatti', price='11722.23', number='9b166c3d-ecd7-4370-b8e8-9a42f06fbc63', mileage='65789.39'), Car(car_type='Van', producer='Bugatti', price='11722.23', number='9b166c3d-ecd7-4370-b8e8-9a42f06fbc63', mileage='65789.39')]'), Garage(town='London', places='5', owner='91579141-9fcb-47f4-af76-5dce792537bc', cars='[Car(car_type='Van', producer='Bugatti', price='11722.23', number='9b166c3d-ecd7-4370-b8e8-9a42f06fbc63', mileage='65789.39'), Car(car_type='Van', producer='Bugatti', price='11722.23', number='9b166c3d-ecd7-4370-b8e8-9a42f06fbc63', mileage='65789.39')]')]"
+}

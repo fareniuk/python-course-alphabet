@@ -166,7 +166,7 @@ class Garage:
 
     @staticmethod
     def to_json(obj: Garage):
-        data = {"cars": obj.cars,
+        data = {"cars": str(obj.cars),
                 "places": obj.places,
                 "owner": str(obj.owner),
                 "town": obj.town
@@ -227,7 +227,7 @@ class Garage:
             return pickle.load(file)
 
     def to_yaml(self):
-        data = {"Garage": {"cars": self.cars,
+        data = {"Garage": {"cars": str(self.cars),
                            "places": self.places,
                            "owner": str(self.owner),
                            "town": self.town}
@@ -282,10 +282,10 @@ class Garage:
 # @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
 class Cesar:
-    def __init__(self, name: str, garages=None):
+    def __init__(self, name: str, garages=None, register_id=None):
         self.name = name
         self.garages = garages if garages else []
-        self.register_id = uuid.uuid4()
+        self.register_id = uuid.uuid4() if None else register_id
 
     def __str__(self):
         return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
@@ -294,7 +294,7 @@ class Cesar:
     def to_json(obj: Cesar):
         data = {"name": obj.name,
                 "register_id": str(obj.register_id),
-                "garages": obj.garages,
+                "garages": str(obj.garages)
                 }
         return data
 
@@ -303,7 +303,7 @@ class Cesar:
         name = data['name']
         register_id = data['register_id']
         garages = data['garages']
-        return Garage(name=name, register_id=register_id, garages=garages)
+        return Cesar(name=name, register_id=register_id, garages=garages)
 
     def json_to_string(self):
         try:
@@ -352,8 +352,8 @@ class Cesar:
 
     def to_yaml(self):
         data = {"Cesar": {"name": self.name,
-                          "register_id": self.register_id,
-                          "garages": str(self.garages),
+                          "register_id": str(self.register_id),
+                          "garages": str(self.garages)
                           }
                 }
         return data
@@ -416,6 +416,8 @@ class Cesar:
 
 if __name__ == "__main__":
 
+    cesar_id = uuid.uuid4()
+
     car = Car(
         car_type=random.choice(CARS_TYPES),
         producer=random.choice(CARS_PRODUCER),
@@ -423,7 +425,16 @@ if __name__ == "__main__":
         mileage=round(random.uniform(1, 100000), 2)
     )
 
-    # Car test ==============================================================================
+    garage = Garage(
+        cars=[car, car],
+        town=random.choice(TOWNS),
+        places=5,
+        owner=cesar_id
+    )
+
+    cesar = Cesar('cesar', [garage, garage])
+
+    print("Car test ==============================================================================")
     print("Json String")
     print(type(car.json_to_string()), car.json_to_string())
     st = car.json_to_string()
@@ -449,3 +460,32 @@ if __name__ == "__main__":
     print("Pickle -->", type(car.instance_from_pickle_file("car_pickle.txt")),
           car.instance_from_pickle_file("car_pickle.txt"))
     print("Yaml -->", type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
+
+    print()
+    print("cesar test ==============================================================================")
+    print("Json String")
+    print(type(cesar.json_to_string()), cesar.json_to_string())
+    st = cesar.json_to_string()
+    print(type(cesar.instance_from_json_string(st)), cesar.instance_from_json_string(st))
+    print()
+
+    print("Pickle String")
+    print(type(cesar.pickle_to_string()), cesar.pickle_to_string())
+    st = cesar.pickle_to_string()
+    print(type(cesar.instance_from_pickle_string(st)), cesar.instance_from_pickle_string(st))
+    print()
+
+    print("Yaml String")
+    print(type(cesar.yaml_to_string()), cesar.yaml_to_string())
+    st = cesar.yaml_to_string()
+    print(type(cesar.instance_from_yaml_string(st)), cesar.instance_from_yaml_string(st))
+    print()
+
+    cesar.json_to_file("cesar.json")
+    cesar.pickle_to_file("cesar_pickle.txt")
+    cesar.yaml_to_file("cesar.yaml")
+    print("JSON-->", type(cesar.instance_from_json_file("cesar.json")), cesar.instance_from_json_file("cesar.json"))
+    print("Pickle -->", type(cesar.instance_from_pickle_file("cesar_pickle.txt")),
+          cesar.instance_from_pickle_file("cesar_pickle.txt"))
+    print("Yaml -->", type(cesar.instance_from_yaml_file("cesar.yaml")),
+          cesar.instance_from_yaml_file("cesar.yaml"))

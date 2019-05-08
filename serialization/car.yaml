@@ -1,6 +1,6 @@
 Car:
-  car_type: SUV
-  producer: BENTLEY
-  price: 79273.08
-  number: 84d7a1b4-e93c-4cd9-9739-7ba85c09fd78
-  mileage: 94550.9
+  car_type: Van
+  producer: Bugatti
+  price: 11722.23
+  number: 9b166c3d-ecd7-4370-b8e8-9a42f06fbc63
+  mileage: 65789.39
