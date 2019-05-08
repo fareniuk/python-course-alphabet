@@ -20,10 +20,11 @@ import random
 import json
 import pickle
 import codecs
-import configparser
+# import configparser
 from ruamel.yaml import YAML
 from serialization.constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
+yaml = YAML()
 
 # _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
@@ -59,8 +60,7 @@ class Car:
         price = data['price']
         number = data['number']
         mileage = data['mileage']
-        cr = Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
-        return cr
+        return Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
 
     def json_to_string(self):
         try:
@@ -119,25 +119,21 @@ class Car:
         price = data['Car']['price']
         number = data['Car']['number']
         mileage = data['Car']['mileage']
-        cr = Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
-        return cr
+        return Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
 
     def yaml_to_string(self):
         return str(self.to_yaml())
 
     @staticmethod
     def instance_from_yaml_string(yaml_string: str):
-        yaml = YAML()
         return Car.from_yaml(yaml.load(yaml_string))
 
     def yaml_to_file(self, file_name: str):
-        yaml = YAML()
         with open(file_name, 'w') as file:
             return yaml.dump(self.to_yaml(), file)
 
     @staticmethod
     def instance_from_yaml_file(file_name: str):
-        yaml = YAML()
         with open(file_name, 'r') as file:
             return Car.from_yaml(yaml.load(file))
 
@@ -170,7 +166,11 @@ class Garage:
 
     @staticmethod
     def to_json(obj: Garage):
-        data = {"cars": obj.cars, "places": obj.places, "owner": str(obj.owner), "town": str(obj.town)}
+        data = {"cars": obj.cars,
+                "places": obj.places,
+                "owner": str(obj.owner),
+                "town": obj.town
+                }
         return data
 
     @classmethod
@@ -179,8 +179,7 @@ class Garage:
         places = data['cars']
         owner = data['owner']
         town = data['town']
-        gr = Garage(cars=cars, places=places, owner=owner, town=town)
-        return gr
+        return Garage(cars=cars, places=places, owner=owner, town=town)
 
     def json_to_string(self):
         try:
@@ -228,28 +227,36 @@ class Garage:
             return pickle.load(file)
 
     def to_yaml(self):
-        data = {self.__class__.__name__: {"cars": self.cars, "places": self.places, "owner": str(self.owner),
-                                          "town": str(self.town)}}
+        data = {"Garage": {"cars": self.cars,
+                           "places": self.places,
+                           "owner": str(self.owner),
+                           "town": self.town}
+                }
         return data
+
+    @classmethod
+    def from_yaml(cls, data):
+        cars = data['Garage']['cars']
+        places = data['Garage']['places']
+        owner = data['Garage']['owner']
+        town = data['Garage']['town']
+        return Garage(cars=cars, places=places, owner=owner, town=town)
 
     def yaml_to_string(self):
         return str(self.to_yaml())
 
     @staticmethod
     def instance_from_yaml_string(yaml_string: str):
-        yaml = YAML()
-        return yaml.load(yaml_string)
+        return Garage.from_yaml(yaml.load(yaml_string))
 
     def yaml_to_file(self, file_name: str):
-        yaml = YAML()
         with open(file_name, 'w') as file:
             return yaml.dump(self.to_yaml(), file)
 
     @staticmethod
     def instance_from_yaml_file(file_name: str):
-        yaml = YAML()
         with open(file_name, 'r') as file:
-            return yaml.load(file)
+            return Garage.from_yaml(yaml.load(file))
 
     def __repr__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
@@ -282,6 +289,97 @@ class Cesar:
 
     def __str__(self):
         return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
+
+    @staticmethod
+    def to_json(obj: Cesar):
+        data = {"name": obj.name,
+                "register_id": str(obj.register_id),
+                "garages": obj.garages,
+                }
+        return data
+
+    @classmethod
+    def from_json(cls, data):
+        name = data['name']
+        register_id = data['register_id']
+        garages = data['garages']
+        return Garage(name=name, register_id=register_id, garages=garages)
+
+    def json_to_string(self):
+        try:
+            return json.dumps(self, default=Cesar.to_json)
+        except TypeError as e:
+            print(e)
+
+    @staticmethod
+    def instance_from_json_string(json_string: str):
+        try:
+            return json.loads(json_string, object_hook=Cesar.from_json)
+
+        except TypeError as e:
+            print(e)
+
+    def json_to_file(self, file_name: str):
+        with open(file_name, 'w') as file:
+            json.dump(self.to_json(self), file, indent=4)
+
+    @staticmethod
+    def instance_from_json_file(file_name: str):
+        with open(file_name, 'r') as file:
+            return json.load(file, object_hook=Cesar.from_json)
+
+    def __setstate__(self, state):
+        self.__dict__ = state
+
+    def __getstate__(self):
+        return self.__dict__
+
+    def pickle_to_string(self):
+        return codecs.encode(pickle.dumps(self), "base64").decode()
+
+    @staticmethod
+    def instance_from_pickle_string(pickle_str: str):
+        return pickle.loads(codecs.decode(pickle_str.encode(), "base64"))
+
+    def pickle_to_file(self, file_name: str):
+        with open(file_name, 'wb') as file:
+            pickle.dump(self, file)
+
+    @staticmethod
+    def instance_from_pickle_file(file_name: str):
+        with open(file_name, 'rb') as file:
+            return pickle.load(file)
+
+    def to_yaml(self):
+        data = {"Cesar": {"name": self.name,
+                          "register_id": self.register_id,
+                          "garages": str(self.garages),
+                          }
+                }
+        return data
+
+    @classmethod
+    def from_yaml(cls, data):
+        name = data['Cesar']['name']
+        register_id = data['Cesar']['register_id']
+        garages = data['Cesar']['garages']
+        return Cesar(name=name, register_id=register_id, garages=garages)
+
+    def yaml_to_string(self):
+        return str(self.to_yaml())
+
+    @staticmethod
+    def instance_from_yaml_string(yaml_string: str):
+        return Cesar.from_yaml(yaml.load(yaml_string))
+
+    def yaml_to_file(self, file_name: str):
+        with open(file_name, 'w') as file:
+            return yaml.dump(self.to_yaml(), file)
+
+    @staticmethod
+    def instance_from_yaml_file(file_name: str):
+        with open(file_name, 'r') as file:
+            return Cesar.from_yaml(yaml.load(file))
 
     def __repr__(self):
         return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
@@ -325,7 +423,6 @@ if __name__ == "__main__":
         mileage=round(random.uniform(1, 100000), 2)
     )
 
-
     # Car test ==============================================================================
     print("Json String")
     print(type(car.json_to_string()), car.json_to_string())
@@ -349,5 +446,6 @@ if __name__ == "__main__":
     car.pickle_to_file("car_pickle.txt")
     car.yaml_to_file("car.yaml")
     print("JSON -->", type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
-    print("Pickle -->", type(car.instance_from_pickle_file("car_pickle.txt")), car.instance_from_pickle_file("car_pickle.txt"))
+    print("Pickle -->", type(car.instance_from_pickle_file("car_pickle.txt")),
+          car.instance_from_pickle_file("car_pickle.txt"))
     print("Yaml -->", type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
