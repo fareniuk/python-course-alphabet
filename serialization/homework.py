@@ -20,6 +20,7 @@ import random
 import json
 import pickle
 import codecs
+import configparser
 from ruamel.yaml import YAML
 from serialization.constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
@@ -68,7 +69,7 @@ class Car:
             print(e)
 
     @staticmethod
-    def сar_from_json_string(json_string: str):
+    def instance_from_json_string(json_string: str):
         try:
             return json.loads(json_string, object_hook=Car.from_json)
 
@@ -94,7 +95,7 @@ class Car:
         return codecs.encode(pickle.dumps(self), "base64").decode()
 
     @staticmethod
-    def car_instance_from_string(pickle_str: str):
+    def instance_from_pickle_string(pickle_str: str):
         return pickle.loads(codecs.decode(pickle_str.encode(), "base64"))
 
     def pickle_to_file(self, file_name: str):
@@ -102,23 +103,32 @@ class Car:
             pickle.dump(self, file)
 
     @staticmethod
-    def car_from_pickle_file(file_name: str):
+    def instance_from_pickle_file(file_name: str):
         with open(file_name, 'rb') as file:
             return pickle.load(file)
 
     def to_yaml(self):
-        data = {self.__class__.__name__ : {"car_type": self.car_type, "producer": self.producer, "price": self.price, "number": str(self.number),
-                "mileage": self.mileage}}
+        data = {"Car": {"car_type": self.car_type, "producer": self.producer, "price": self.price,
+                        "number": str(self.number), "mileage": self.mileage}}
         return data
 
+    @classmethod
+    def from_yaml(cls, data):
+        car_type = data['Car']['car_type']
+        producer = data['Car']['producer']
+        price = data['Car']['price']
+        number = data['Car']['number']
+        mileage = data['Car']['mileage']
+        cr = Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
+        return cr
+
     def yaml_to_string(self):
-        yaml = YAML()
         return str(self.to_yaml())
 
     @staticmethod
     def instance_from_yaml_string(yaml_string: str):
         yaml = YAML()
-        return yaml.load(yaml_string)
+        return Car.from_yaml(yaml.load(yaml_string))
 
     def yaml_to_file(self, file_name: str):
         yaml = YAML()
@@ -129,7 +139,7 @@ class Car:
     def instance_from_yaml_file(file_name: str):
         yaml = YAML()
         with open(file_name, 'r') as file:
-            return yaml.load(file)
+            return Car.from_yaml(yaml.load(file))
 
     def __repr__(self):
         return f"Car(car_type='{self.car_type}', producer='{self.producer}', price='{self.price}'," \
@@ -157,6 +167,89 @@ class Garage:
 
     def __str__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
+
+    @staticmethod
+    def to_json(obj: Garage):
+        data = {"cars": obj.cars, "places": obj.places, "owner": str(obj.owner), "town": str(obj.town)}
+        return data
+
+    @classmethod
+    def from_json(cls, data):
+        cars = data['cars']
+        places = data['cars']
+        owner = data['owner']
+        town = data['town']
+        gr = Garage(cars=cars, places=places, owner=owner, town=town)
+        return gr
+
+    def json_to_string(self):
+        try:
+            return json.dumps(self, default=Garage.to_json)
+        except TypeError as e:
+            print(e)
+
+    @staticmethod
+    def instance_from_json_string(json_string: str):
+        try:
+            return json.loads(json_string, object_hook=Garage.from_json)
+
+        except TypeError as e:
+            print(e)
+
+    def json_to_file(self, file_name: str):
+        with open(file_name, 'w') as file:
+            json.dump(self.to_json(self), file, indent=4)
+
+    @staticmethod
+    def instance_from_json_file(file_name: str):
+        with open(file_name, 'r') as file:
+            return json.load(file, object_hook=Garage.from_json)
+
+    def __setstate__(self, state):
+        self.__dict__ = state
+
+    def __getstate__(self):
+        return self.__dict__
+
+    def pickle_to_string(self):
+        return codecs.encode(pickle.dumps(self), "base64").decode()
+
+    @staticmethod
+    def instance_from_pickle_string(pickle_str: str):
+        return pickle.loads(codecs.decode(pickle_str.encode(), "base64"))
+
+    def pickle_to_file(self, file_name: str):
+        with open(file_name, 'wb') as file:
+            pickle.dump(self, file)
+
+    @staticmethod
+    def instance_from_pickle_file(file_name: str):
+        with open(file_name, 'rb') as file:
+            return pickle.load(file)
+
+    def to_yaml(self):
+        data = {self.__class__.__name__: {"cars": self.cars, "places": self.places, "owner": str(self.owner),
+                                          "town": str(self.town)}}
+        return data
+
+    def yaml_to_string(self):
+        return str(self.to_yaml())
+
+    @staticmethod
+    def instance_from_yaml_string(yaml_string: str):
+        yaml = YAML()
+        return yaml.load(yaml_string)
+
+    def yaml_to_file(self, file_name: str):
+        yaml = YAML()
+        with open(file_name, 'w') as file:
+            return yaml.dump(self.to_yaml(), file)
+
+    @staticmethod
+    def instance_from_yaml_file(file_name: str):
+        yaml = YAML()
+        with open(file_name, 'r') as file:
+            return yaml.load(file)
 
     def __repr__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
@@ -232,17 +325,29 @@ if __name__ == "__main__":
         mileage=round(random.uniform(1, 100000), 2)
     )
 
+
+    # Car test ==============================================================================
+    print("Json String")
+    print(type(car.json_to_string()), car.json_to_string())
+    st = car.json_to_string()
+    print(type(car.instance_from_json_string(st)), car.instance_from_json_string(st))
     print()
+
+    print("Pickle String")
+    print(type(car.pickle_to_string()), car.pickle_to_string())
+    st = car.pickle_to_string()
+    print(type(car.instance_from_pickle_string(st)), car.instance_from_pickle_string(st))
+    print()
+
+    print("Yaml String")
     print(type(car.yaml_to_string()), car.yaml_to_string())
-    st=car.yaml_to_string()
-    print(type(car.instance_from_yaml_string(st)),car.instance_from_yaml_string(st))
+    st = car.yaml_to_string()
+    print(type(car.instance_from_yaml_string(st)), car.instance_from_yaml_string(st))
     print()
-    print(type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
-    print("pickle  ", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-    print(type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
+
     car.json_to_file("car.json")
-    car.pickle_to_file("pickle.txt")
+    car.pickle_to_file("car_pickle.txt")
     car.yaml_to_file("car.yaml")
     print("JSON -->", type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
-    print("Pickle -->", type(car.car_from_pickle_file("pickle.txt")), car.car_from_pickle_file("pickle.txt"))
-    print("Yaml -->",type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
+    print("Pickle -->", type(car.instance_from_pickle_file("car_pickle.txt")), car.instance_from_pickle_file("car_pickle.txt"))
+    print("Yaml -->", type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
