@@ -176,7 +176,7 @@ class Garage:
     @classmethod
     def from_json(cls, data):
         cars = data['cars']
-        places = data['cars']
+        places = data['places']
         owner = data['owner']
         town = data['town']
         return Garage(cars=cars, places=places, owner=owner, town=town)
@@ -460,6 +460,35 @@ if __name__ == "__main__":
     print("Pickle -->", type(car.instance_from_pickle_file("car_pickle.txt")),
           car.instance_from_pickle_file("car_pickle.txt"))
     print("Yaml -->", type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
+
+    print()
+    print("garage test ==============================================================================")
+    print("Json String")
+    print(type(garage.json_to_string()), garage.json_to_string())
+    st = garage.json_to_string()
+    print(type(garage.instance_from_json_string(st)), garage.instance_from_json_string(st))
+    print()
+
+    print("Pickle String")
+    print(type(garage.pickle_to_string()), garage.pickle_to_string())
+    st = garage.pickle_to_string()
+    print(type(garage.instance_from_pickle_string(st)), garage.instance_from_pickle_string(st))
+    print()
+
+    print("Yaml String")
+    print(type(garage.yaml_to_string()), garage.yaml_to_string())
+    st = garage.yaml_to_string()
+    print(type(garage.instance_from_yaml_string(st)), garage.instance_from_yaml_string(st))
+    print()
+
+    garage.json_to_file("garage.json")
+    garage.pickle_to_file("garage_pickle.txt")
+    garage.yaml_to_file("garage.yaml")
+    print("JSON-->", type(garage.instance_from_json_file("garage.json")), garage.instance_from_json_file("garage.json"))
+    print("Pickle -->", type(garage.instance_from_pickle_file("garage_pickle.txt")),
+          garage.instance_from_pickle_file("garage_pickle.txt"))
+    print("Yaml -->", type(garage.instance_from_yaml_file("garage.yaml")),
+          garage.instance_from_yaml_file("garage.yaml"))
 
     print()
     print("cesar test ==============================================================================")

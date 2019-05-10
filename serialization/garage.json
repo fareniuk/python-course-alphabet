@@ -1,6 +1,6 @@
 {
-    "cars": "[Car(car_type='Truck', producer='Chery', price='82888.93', number='c7553e4f-86e9-4527-b390-c152c4b68497', mileage='89646.68'), Car(car_type='Truck', producer='Chery', price='82888.93', number='c7553e4f-86e9-4527-b390-c152c4b68497', mileage='89646.68')]",
+    "cars": "[Car(car_type='SUV', producer='Lamborghini', price='72675.93', number='1b0a2f4c-ed55-443c-82c6-fd5d042b8a60', mileage='16640.68'), Car(car_type='SUV', producer='Lamborghini', price='72675.93', number='1b0a2f4c-ed55-443c-82c6-fd5d042b8a60', mileage='16640.68')]",
     "places": 5,
-    "owner": "8bffe835-6b93-46c6-9555-b665e9f3e4eb",
-    "town": "London"
+    "owner": "b8820f02-7a0c-404b-a0e0-09618ed65519",
+    "town": "Amsterdam"
 }
