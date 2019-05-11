@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from lesson.some_data import DATA
+from serialization.lesson.some_data import DATA
 
 import pickle
 

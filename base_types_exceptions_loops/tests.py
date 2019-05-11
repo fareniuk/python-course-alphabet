@@ -91,8 +91,8 @@ class TestOperationsWithInts(unittest.TestCase):
 
     def test_multiple_ints_with_conversion_invalid_values(self):
         with self.assertRaises(ValueError):
-            multiple_ints_with_conversion("Some useful text from your teacher", 2)
-            multiple_ints_with_conversion([12, 6, 98], 2)
+            multiple_ints("Some useful text from your teacher", 2)
+            multiple_ints([12, 6, 98], 2)
 
 
 class TestLoopExercises(unittest.TestCase):
@@ -102,21 +102,21 @@ class TestLoopExercises(unittest.TestCase):
         self.assertListEqual(some_loop_exercise(), [0, 1, 2, 3, 4, 5, 8, 9, 10, 11, 12])
 
     def test_remove_from_list_all_negative_numbers(self):
-        given_data = [1, 2, -9, 6, 7, 6, -19, -12]
+        input_data = [1, 2, -9, 6, 7, 6, -19, -12]
         expected_result = [1, 2, 6, 7, 6]
-        self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
-        given_data = [-33, 68, -5, -65, 47, -55, -36, 85, -6, 50]
+        self.assertListEqual(remove_from_list_all_negative_numbers(input_data), expected_result)
+        input_data = [-33, 68, -5, -65, 47, -55, -36, 85, -6, 50]
         expected_result = [68, 47, 85, 50]
 
-        self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
+        self.assertListEqual(remove_from_list_all_negative_numbers(input_data), expected_result)
 
-        given_data = [-14, -59, -36, -69, -73, -69, -44, -83, -77, -93]
+        input_data = [-14, -59, -36, -69, -73, -69, -44, -83, -77, -93]
         expected_result = []
-        self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
+        self.assertListEqual(remove_from_list_all_negative_numbers(input_data), expected_result)
 
         for i in range(10):
-            given_data = [random.randint(-100, 100)]
-            result = remove_from_list_all_negative_numbers(given_data)
+            input_data = [random.randint(-100, 100)]
+            result = remove_from_list_all_negative_numbers(input_data)
             if result:
                 min_value = min(result)
                 self.assertGreaterEqual(min_value, 0)
@@ -146,10 +146,10 @@ class TestSimpleSort(unittest.TestCase):
 
     def test_simple_sort(self):
         for _ in range(10):
-            given_data = [random.randint(0, 100) for _ in range(random.randint(2, 20))]
-            expected_result = given_data.copy()
+            input_data = [random.randint(0, 100) for _ in range(random.randint(2, 20))]
+            expected_result = input_data.copy()
             expected_result.sort()
-            self.assertListEqual(simple_sort(given_data), expected_result)
+            self.assertListEqual(simple_sort(input_data), expected_result)
 
 
 class TestAlphabet(unittest.TestCase):

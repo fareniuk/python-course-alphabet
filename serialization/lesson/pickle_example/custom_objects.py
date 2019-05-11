@@ -25,10 +25,11 @@ if __name__ == "__main__":
     programmer = Programmer("Captain America")
     programmer.enough_coffee = True
     # Lets dump object to pickle
+    print(programmer.__getstate__())
     with open("data.txt", "wb") as file:
         pickle.dump(programmer, file)
 
     # Lets load it
     with open("data.txt", "rb") as file:
         restore_obj = pickle.load(file)
-        print(restore_obj)
+        print(type(restore_obj), restore_obj)
