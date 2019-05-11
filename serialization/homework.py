@@ -20,12 +20,24 @@ import random
 import json
 import pickle
 import codecs
-# import configparser
 from ruamel.yaml import YAML
+from ruamel.yaml.compat import StringIO
 from serialization.constants import TOWNS, CARS_TYPES, CARS_PRODUCER
 
-yaml = YAML()
 
+class MyYAML(YAML):
+    def dump(self, data, stream=None, **kw):
+        inefficient = False
+        if stream is None:
+            inefficient = True
+            stream = StringIO()
+        YAML.dump(self, data, stream, **kw)
+        if inefficient:
+            return stream.getvalue()
+
+
+yaml = YAML()
+my_yaml = MyYAML()
 # _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
@@ -122,7 +134,7 @@ class Car:
         return Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
 
     def yaml_to_string(self):
-        return str(self.to_yaml())
+        return my_yaml.dump(self.to_yaml())
 
     @staticmethod
     def instance_from_yaml_string(yaml_string: str):
@@ -175,7 +187,7 @@ class Garage:
 
     @classmethod
     def from_json(cls, data):
-        cars = [car.instance_from_json_string(c) for c in data['cars'] ]
+        cars = [car.instance_from_json_string(c) for c in data['cars']]
         places = data['places']
         owner = data['owner']
         town = data['town']
@@ -243,7 +255,7 @@ class Garage:
         return Garage(cars=cars, places=places, owner=owner, town=town)
 
     def yaml_to_string(self):
-        return str(self.to_yaml())
+        return my_yaml.dump(self.to_yaml())
 
     @staticmethod
     def instance_from_yaml_string(yaml_string: str):
@@ -276,7 +288,6 @@ class Garage:
 
     def hit_hat(self):
         return sum(car.price for car in self.cars)
-
 
 # _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
@@ -366,7 +377,7 @@ class Cesar:
         return Cesar(name=name, register_id=register_id, garages=garages)
 
     def yaml_to_string(self):
-        return str(self.to_yaml())
+        return my_yaml.dump(self.to_yaml())
 
     @staticmethod
     def instance_from_yaml_string(yaml_string: str):
@@ -478,8 +489,8 @@ if __name__ == "__main__":
     print("Yaml String")
     print(type(garage.yaml_to_string()), garage.yaml_to_string())
     st = garage.yaml_to_string()
+    print(st)
     print(type(garage.instance_from_yaml_string(st)), garage.instance_from_yaml_string(st))
-    gr1 = garage.instance_from_yaml_string(st)
 
     garage.json_to_file("garage.json")
     garage.pickle_to_file("garage_pickle.txt")
@@ -507,7 +518,7 @@ if __name__ == "__main__":
     print("Yaml String")
     print(type(cesar.yaml_to_string()), cesar.yaml_to_string())
     st = cesar.yaml_to_string()
- #   print(type(cesar.instance_from_yaml_string(st)), cesar.instance_from_yaml_string(st))
+    print(type(cesar.instance_from_yaml_string(st)), cesar.instance_from_yaml_string(st))
     print()
 
     cesar.json_to_file("cesar.json")

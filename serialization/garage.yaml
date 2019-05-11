@@ -1,9 +1,9 @@
 Garage:
   cars:
-  - "{'Car': {'car_type': 'SUV', 'producer': 'Lamborghini', 'price': 88448.07, 'number':\
-    \ '3e96363e-368c-41bc-9f26-026f43e7c24a', 'mileage': 34471.56}}"
-  - "{'Car': {'car_type': 'SUV', 'producer': 'Lamborghini', 'price': 88448.07, 'number':\
-    \ '3e96363e-368c-41bc-9f26-026f43e7c24a', 'mileage': 34471.56}}"
+  - "Car:\n  car_type: Luxury Car\n  producer: Ford\n  price: 59107.39\n  number:\
+    \ 607f2dd9-6ff8-406a-b76e-7888cb989311\n  mileage: 26392.95\n"
+  - "Car:\n  car_type: Luxury Car\n  producer: Ford\n  price: 59107.39\n  number:\
+    \ 607f2dd9-6ff8-406a-b76e-7888cb989311\n  mileage: 26392.95\n"
   places: 5
-  owner: 2b2e6d58-506c-4ead-b055-7a0f0d332680
-  town: Prague
+  owner: b634ae0e-5b9a-424e-ad7e-8453bc65e96a
+  town: Kiev
