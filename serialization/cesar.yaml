@@ -1,11 +1,14 @@
 Cesar:
   name: cesar
   register_id: None
-  garages: "[Garage(town='Amsterdam', places='5', owner='b8820f02-7a0c-404b-a0e0-09618ed65519',\
-    \ cars='[Car(car_type='SUV', producer='Lamborghini', price='72675.93', number='1b0a2f4c-ed55-443c-82c6-fd5d042b8a60',\
-    \ mileage='16640.68'), Car(car_type='SUV', producer='Lamborghini', price='72675.93',\
-    \ number='1b0a2f4c-ed55-443c-82c6-fd5d042b8a60', mileage='16640.68')]'), Garage(town='Amsterdam',\
-    \ places='5', owner='b8820f02-7a0c-404b-a0e0-09618ed65519', cars='[Car(car_type='SUV',\
-    \ producer='Lamborghini', price='72675.93', number='1b0a2f4c-ed55-443c-82c6-fd5d042b8a60',\
-    \ mileage='16640.68'), Car(car_type='SUV', producer='Lamborghini', price='72675.93',\
-    \ number='1b0a2f4c-ed55-443c-82c6-fd5d042b8a60', mileage='16640.68')]')]"
+  garages:
+  - "{'Garage': {'cars': [\"{'Car': {'car_type': 'SUV', 'producer': 'Lamborghini',\
+    \ 'price': 88448.07, 'number': '3e96363e-368c-41bc-9f26-026f43e7c24a', 'mileage':\
+    \ 34471.56}}\", \"{'Car': {'car_type': 'SUV', 'producer': 'Lamborghini', 'price':\
+    \ 88448.07, 'number': '3e96363e-368c-41bc-9f26-026f43e7c24a', 'mileage': 34471.56}}\"\
+    ], 'places': 5, 'owner': '2b2e6d58-506c-4ead-b055-7a0f0d332680', 'town': 'Prague'}}"
+  - "{'Garage': {'cars': [\"{'Car': {'car_type': 'SUV', 'producer': 'Lamborghini',\
+    \ 'price': 88448.07, 'number': '3e96363e-368c-41bc-9f26-026f43e7c24a', 'mileage':\
+    \ 34471.56}}\", \"{'Car': {'car_type': 'SUV', 'producer': 'Lamborghini', 'price':\
+    \ 88448.07, 'number': '3e96363e-368c-41bc-9f26-026f43e7c24a', 'mileage': 34471.56}}\"\
+    ], 'places': 5, 'owner': '2b2e6d58-506c-4ead-b055-7a0f0d332680', 'town': 'Prague'}}"

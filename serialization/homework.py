@@ -166,7 +166,7 @@ class Garage:
 
     @staticmethod
     def to_json(obj: Garage):
-        data = {"cars": str(obj.cars),
+        data = {"cars": [c.json_to_string() for c in obj.cars],
                 "places": obj.places,
                 "owner": str(obj.owner),
                 "town": obj.town
@@ -175,7 +175,7 @@ class Garage:
 
     @classmethod
     def from_json(cls, data):
-        cars = data['cars']
+        cars = [car.instance_from_json_string(c) for c in data['cars'] ]
         places = data['places']
         owner = data['owner']
         town = data['town']
@@ -227,7 +227,7 @@ class Garage:
             return pickle.load(file)
 
     def to_yaml(self):
-        data = {"Garage": {"cars": str(self.cars),
+        data = {"Garage": {"cars": [c.yaml_to_string() for c in self.cars],
                            "places": self.places,
                            "owner": str(self.owner),
                            "town": self.town}
@@ -236,7 +236,7 @@ class Garage:
 
     @classmethod
     def from_yaml(cls, data):
-        cars = data['Garage']['cars']
+        cars = [car.instance_from_yaml_string(c) for c in data['Garage']['cars']]
         places = data['Garage']['places']
         owner = data['Garage']['owner']
         town = data['Garage']['town']
@@ -294,7 +294,7 @@ class Cesar:
     def to_json(obj: Cesar):
         data = {"name": obj.name,
                 "register_id": str(obj.register_id),
-                "garages": str(obj.garages)
+                "garages": [g.json_to_string() for g in obj.garages],
                 }
         return data
 
@@ -302,7 +302,7 @@ class Cesar:
     def from_json(cls, data):
         name = data['name']
         register_id = data['register_id']
-        garages = data['garages']
+        garages = [garage.instance_from_json_string(g) for g in data['garages']]
         return Cesar(name=name, register_id=register_id, garages=garages)
 
     def json_to_string(self):
@@ -353,7 +353,7 @@ class Cesar:
     def to_yaml(self):
         data = {"Cesar": {"name": self.name,
                           "register_id": str(self.register_id),
-                          "garages": str(self.garages)
+                          "garages": [g.yaml_to_string() for g in self.garages]
                           }
                 }
         return data
@@ -362,7 +362,7 @@ class Cesar:
     def from_yaml(cls, data):
         name = data['Cesar']['name']
         register_id = data['Cesar']['register_id']
-        garages = data['Cesar']['garages']
+        garages = [garage.instance_from_yaml_string(g) for g in data['Cesar']['garages']]
         return Cesar(name=name, register_id=register_id, garages=garages)
 
     def yaml_to_string(self):
@@ -479,7 +479,7 @@ if __name__ == "__main__":
     print(type(garage.yaml_to_string()), garage.yaml_to_string())
     st = garage.yaml_to_string()
     print(type(garage.instance_from_yaml_string(st)), garage.instance_from_yaml_string(st))
-    print()
+    gr1 = garage.instance_from_yaml_string(st)
 
     garage.json_to_file("garage.json")
     garage.pickle_to_file("garage_pickle.txt")
@@ -507,7 +507,7 @@ if __name__ == "__main__":
     print("Yaml String")
     print(type(cesar.yaml_to_string()), cesar.yaml_to_string())
     st = cesar.yaml_to_string()
-    print(type(cesar.instance_from_yaml_string(st)), cesar.instance_from_yaml_string(st))
+ #   print(type(cesar.instance_from_yaml_string(st)), cesar.instance_from_yaml_string(st))
     print()
 
     cesar.json_to_file("cesar.json")
