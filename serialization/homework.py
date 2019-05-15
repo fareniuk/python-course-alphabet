@@ -38,6 +38,31 @@ class MyYAML(YAML):
 
 class Serialization:
     # JSON
+    @staticmethod
+    def json_to_string(obj):
+        try:
+            return json.dumps(obj, default=obj.to_json)
+        except TypeError as e:
+            print(e)
+
+    @staticmethod
+    def instance_from_json_string(obj, json_string: str):
+        try:
+            return json.loads(json_string, object_hook=obj.from_json)
+
+        except TypeError as e:
+            print(e)
+
+    @staticmethod
+    def json_to_file(obj, file_name: str):
+        with open(file_name, 'w') as f:
+            json.dump(obj.to_json(obj), f, indent=4)
+
+    @staticmethod
+    def instance_from_json_file(obj, file_name: str):
+        with open(file_name, 'r') as f:
+            return json.load(f, object_hook=obj.from_json)
+
     # Pickle
     @staticmethod
     def pickle_to_string(obj):
@@ -57,6 +82,23 @@ class Serialization:
         with open(file_name, 'rb') as f:
             return pickle.load(f)
     # Yaml
+    @staticmethod
+    def yaml_to_string(obj):
+        return my_yaml.dump(obj.to_yaml())
+
+    @staticmethod
+    def instance_from_yaml_string(obj, yaml_string: str):
+        return obj.from_yaml(yaml.load(yaml_string))
+
+    @staticmethod
+    def yaml_to_file(obj, file_name: str):
+        with open(file_name, 'w') as f:
+            return yaml.dump(obj.to_yaml(), f)
+
+    @staticmethod
+    def instance_from_yaml_file(obj, file_name: str):
+        with open(file_name, 'r') as f:
+            return obj.from_yaml(yaml.load(f))
 
 
 yaml = YAML()
@@ -93,29 +135,6 @@ class Car:
         mileage = data['mileage']
         return Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
 
-    def json_to_string(self):
-        try:
-            return json.dumps(self, default=Car.to_json)
-        except TypeError as e:
-            print(e)
-
-    @staticmethod
-    def instance_from_json_string(json_string: str):
-        try:
-            return json.loads(json_string, object_hook=Car.from_json)
-
-        except TypeError as e:
-            print(e)
-
-    def json_to_file(self, file_name: str):
-        with open(file_name, 'w') as f:
-            json.dump(self.to_json(self), f, indent=4)
-
-    @staticmethod
-    def instance_from_json_file(file_name: str):
-        with open(file_name, 'r') as f:
-            return json.load(f, object_hook=Car.from_json)
-
     def __setstate__(self, state):
         self.__dict__ = state
 
@@ -135,22 +154,6 @@ class Car:
         number = data['Car']['number']
         mileage = data['Car']['mileage']
         return Car(car_type=car_type, producer=producer, price=price, number=number, mileage=mileage)
-
-    def yaml_to_string(self):
-        return my_yaml.dump(self.to_yaml())
-
-    @staticmethod
-    def instance_from_yaml_string(yaml_string: str):
-        return Car.from_yaml(yaml.load(yaml_string))
-
-    def yaml_to_file(self, file_name: str):
-        with open(file_name, 'w') as f:
-            return yaml.dump(self.to_yaml(), f)
-
-    @staticmethod
-    def instance_from_yaml_file(file_name: str):
-        with open(file_name, 'r') as f:
-            return Car.from_yaml(yaml.load(f))
 
     def __repr__(self):
         return f"Car(car_type='{self.car_type}', producer='{self.producer}', price='{self.price}'," \
@@ -178,43 +181,20 @@ class Garage:
 
     @staticmethod
     def to_json(obj: Garage):
-        data = {"cars": [c.json_to_string() for c in obj.cars],
+        data = {"cars": [Serialization.json_to_string(c) for c in obj.cars],
                 "places": obj.places,
                 "owner": str(obj.owner),
                 "town": obj.town
                 }
         return data
 
-    @classmethod
-    def from_json(cls, data):
-        cars = [car.instance_from_json_string(c) for c in data['cars']]
+    @staticmethod
+    def from_json(data):
+        cars = [Serialization.instance_from_json_string(car, c) for c in data['cars']]
         places = data['places']
         owner = data['owner']
         town = data['town']
         return Garage(cars=cars, places=places, owner=owner, town=town)
-
-    def json_to_string(self):
-        try:
-            return json.dumps(self, default=Garage.to_json)
-        except TypeError as e:
-            print(e)
-
-    @staticmethod
-    def instance_from_json_string(json_string: str):
-        try:
-            return json.loads(json_string, object_hook=Garage.from_json)
-
-        except TypeError as e:
-            print(e)
-
-    def json_to_file(self, file_name: str):
-        with open(file_name, 'w') as f:
-            json.dump(self.to_json(self), f, indent=4)
-
-    @staticmethod
-    def instance_from_json_file(file_name: str):
-        with open(file_name, 'r') as f:
-            return json.load(f, object_hook=Garage.from_json)
 
     def __setstate__(self, state):
         self.__dict__ = state
@@ -223,7 +203,7 @@ class Garage:
         return self.__dict__
 
     def to_yaml(self):
-        data = {"Garage": {"cars": [c.yaml_to_string() for c in self.cars],
+        data = {"Garage": {"cars": [Serialization.yaml_to_string(c) for c in self.cars],
                            "places": self.places,
                            "owner": str(self.owner),
                            "town": self.town}
@@ -232,27 +212,11 @@ class Garage:
 
     @classmethod
     def from_yaml(cls, data):
-        cars = [car.instance_from_yaml_string(c) for c in data['Garage']['cars']]
+        cars = [Serialization.instance_from_yaml_string(car, c) for c in data['Garage']['cars']]
         places = data['Garage']['places']
         owner = data['Garage']['owner']
         town = data['Garage']['town']
         return Garage(cars=cars, places=places, owner=owner, town=town)
-
-    def yaml_to_string(self):
-        return my_yaml.dump(self.to_yaml())
-
-    @staticmethod
-    def instance_from_yaml_string(yaml_string: str):
-        return Garage.from_yaml(yaml.load(yaml_string))
-
-    def yaml_to_file(self, file_name: str):
-        with open(file_name, 'w') as f:
-            return yaml.dump(self.to_yaml(), f)
-
-    @staticmethod
-    def instance_from_yaml_file(file_name: str):
-        with open(file_name, 'r') as f:
-            return Garage.from_yaml(yaml.load(f))
 
     def __repr__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
@@ -280,13 +244,13 @@ class Cesar:
     def __init__(self, name: str, garages=None, register_id=None):
         self.name = name
         self.garages = garages if garages else []
-        self.register_id = uuid.uuid4() if None else register_id
+        self.register_id = register_id if register_id else uuid.uuid4()
 
     @staticmethod
     def to_json(obj: Cesar):
         data = {"name": obj.name,
                 "register_id": str(obj.register_id),
-                "garages": [g.json_to_string() for g in obj.garages],
+                "garages": [Serialization.json_to_string(g) for g in obj.garages],
                 }
         return data
 
@@ -294,31 +258,8 @@ class Cesar:
     def from_json(data):
         name = data['name']
         register_id = data['register_id']
-        garages = [garage.instance_from_json_string(g) for g in data['garages']]
+        garages = [Serialization.instance_from_json_string(garage, g) for g in data['garages']]
         return Cesar(name=name, register_id=register_id, garages=garages)
-
-    def json_to_string(self):
-        try:
-            return json.dumps(self, default=Cesar.to_json)
-        except TypeError as e:
-            print(e)
-
-    @staticmethod
-    def instance_from_json_string(json_string: str):
-        try:
-            return json.loads(json_string, object_hook=Cesar.from_json)
-
-        except TypeError as e:
-            print(e)
-
-    def json_to_file(self, file_name: str):
-        with open(file_name, 'w') as f:
-            json.dump(self.to_json(self), f, indent=4)
-
-    @staticmethod
-    def instance_from_json_file(file_name: str):
-        with open(file_name, 'r') as f:
-            return json.load(f, object_hook=Cesar.from_json)
 
     def __setstate__(self, state):
         self.__dict__ = state
@@ -329,7 +270,7 @@ class Cesar:
     def to_yaml(self):
         data = {"Cesar": {"name": self.name,
                           "register_id": str(self.register_id),
-                          "garages": [g.yaml_to_string() for g in self.garages]
+                          "garages": [Serialization.yaml_to_string(g) for g in self.garages]
                           }
                 }
         return data
@@ -338,24 +279,8 @@ class Cesar:
     def from_yaml(cls, data):
         name = data['Cesar']['name']
         register_id = data['Cesar']['register_id']
-        garages = [garage.instance_from_yaml_string(g) for g in data['Cesar']['garages']]
+        garages = [Serialization.instance_from_yaml_string(garage, g) for g in data['Cesar']['garages']]
         return Cesar(name=name, register_id=register_id, garages=garages)
-
-    def yaml_to_string(self):
-        return my_yaml.dump(self.to_yaml())
-
-    @staticmethod
-    def instance_from_yaml_string(yaml_string: str):
-        return Cesar.from_yaml(yaml.load(yaml_string))
-
-    def yaml_to_file(self, file_name: str):
-        with open(file_name, 'w') as f:
-            return yaml.dump(self.to_yaml(), f)
-
-    @staticmethod
-    def instance_from_yaml_file(file_name: str):
-        with open(file_name, 'r') as f:
-            return Cesar.from_yaml(yaml.load(f))
 
     def __repr__(self):
         return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
@@ -413,37 +338,43 @@ if __name__ == "__main__":
 
     print("Car test ==============================================================================")
     print("Json String")
-    print(type(car.json_to_string()), car.json_to_string())
-    st = car.json_to_string()
-    print(type(car.instance_from_json_string(st)), car.instance_from_json_string(st))
+    print(type(Serialization.json_to_string(car)), Serialization.json_to_string(car))
+    st = Serialization.json_to_string(car)
+    print(type(Serialization.instance_from_json_string(car, st)),
+          Serialization.instance_from_json_string(car, st))
     print()
 
     print("Pickle String")
     print(type(Serialization.pickle_to_string(car)), Serialization.pickle_to_string(car))
     st = Serialization.pickle_to_string(car)
-    print(type(Serialization.instance_from_pickle_string(st)), Serialization.instance_from_pickle_string(st))
+    print(type(Serialization.instance_from_pickle_string(st)),
+          Serialization.instance_from_pickle_string(st))
     print()
 
     print("Yaml String")
-    print(type(car.yaml_to_string()), car.yaml_to_string())
-    st = car.yaml_to_string()
-    print(type(car.instance_from_yaml_string(st)), car.instance_from_yaml_string(st))
+    print(type(Serialization.yaml_to_string(car)), Serialization.yaml_to_string(car))
+    st = Serialization.yaml_to_string(car)
+    print(type(Serialization.instance_from_yaml_string(car, st)),
+          Serialization.instance_from_yaml_string(car, st))
     print()
 
-    car.json_to_file("car.json")
+    Serialization.json_to_file(car, "car.json")
     Serialization.pickle_to_file(car, "car.pickle")
-    car.yaml_to_file("car.yaml")
-    print("JSON -->", type(car.instance_from_json_file("car.json")), car.instance_from_json_file("car.json"))
+    Serialization.yaml_to_file(car, "car.yaml")
+    print("JSON -->", type(Serialization.instance_from_json_file(car, "car.json")),
+          Serialization.instance_from_json_file(car, "car.json"))
     print("Pickle -->", type(Serialization.instance_from_pickle_file("car.pickle")),
           Serialization.instance_from_pickle_file("car.pickle"))
-    print("Yaml -->", type(car.instance_from_yaml_file("car.yaml")), car.instance_from_yaml_file("car.yaml"))
+    print("Yaml -->", type(Serialization.instance_from_yaml_file(car, "car.yaml")),
+          Serialization.instance_from_yaml_file(car, "car.yaml"))
 
     print()
     print("garage test ==============================================================================")
     print("Json String")
-    print(type(garage.json_to_string()), garage.json_to_string())
-    st = garage.json_to_string()
-    print(type(garage.instance_from_json_string(st)), garage.instance_from_json_string(st))
+    print(type(Serialization.json_to_string(garage)), Serialization.json_to_string(garage))
+    st = Serialization.json_to_string(garage)
+    print(type(Serialization.instance_from_json_string(garage, st)),
+          Serialization.instance_from_json_string(garage, st))
     print()
 
     print("Pickle String")
@@ -453,45 +384,50 @@ if __name__ == "__main__":
     print()
 
     print("Yaml String")
-    print(type(garage.yaml_to_string()), garage.yaml_to_string())
-    st = garage.yaml_to_string()
+    print(type(Serialization.yaml_to_string(garage)), Serialization.yaml_to_string(garage))
+    st = Serialization.yaml_to_string(garage)
     print(st)
-    print(type(garage.instance_from_yaml_string(st)), garage.instance_from_yaml_string(st))
+    print(type(Serialization.instance_from_yaml_string(garage, st)),
+          Serialization.instance_from_yaml_string(garage, st))
 
-    garage.json_to_file("garage.json")
+    Serialization.json_to_file(garage, "garage.json")
     Serialization.pickle_to_file(garage, "garage.pickle")
-    garage.yaml_to_file("garage.yaml")
-    print("JSON-->", type(garage.instance_from_json_file("garage.json")), garage.instance_from_json_file("garage.json"))
+    Serialization.yaml_to_file(garage, "garage.yaml")
+    print("JSON-->", type(Serialization.instance_from_json_file(garage, "garage.json")),
+          Serialization.instance_from_json_file(garage, "garage.json"))
     print("Pickle -->", type(Serialization.instance_from_pickle_file("garage.pickle")),
           Serialization.instance_from_pickle_file("garage.pickle"))
-    print("Yaml -->", type(garage.instance_from_yaml_file("garage.yaml")),
-          garage.instance_from_yaml_file("garage.yaml"))
+    print("Yaml -->", type(Serialization.instance_from_yaml_file(garage, "garage.yaml")),
+          Serialization.instance_from_yaml_file(garage, "garage.yaml"))
 
     print()
     print("cesar test ==============================================================================")
     print("Json String")
-    print(type(cesar.json_to_string()), cesar.json_to_string())
-    st = cesar.json_to_string()
-    print(type(cesar.instance_from_json_string(st)), cesar.instance_from_json_string(st))
+    print(type(Serialization.json_to_string(cesar)), Serialization.json_to_string(cesar))
+    st = Serialization.json_to_string(cesar)
+    print(type(Serialization.instance_from_json_string(cesar, st)), Serialization.instance_from_json_string(cesar, st))
     print()
 
     print("Pickle String")
     print(type(Serialization.pickle_to_string(cesar)), Serialization.pickle_to_string(cesar))
     st = Serialization.pickle_to_string(cesar)
-    print(type(Serialization.instance_from_pickle_string(st)), Serialization.instance_from_pickle_string(st))
+    print(type(Serialization.instance_from_pickle_string(st)),
+          Serialization.instance_from_pickle_string(st))
     print()
 
     print("Yaml String")
-    print(type(cesar.yaml_to_string()), cesar.yaml_to_string())
-    st = cesar.yaml_to_string()
-    print(type(cesar.instance_from_yaml_string(st)), cesar.instance_from_yaml_string(st))
+    print(type(Serialization.yaml_to_string(cesar)), Serialization.yaml_to_string(cesar))
+    st = Serialization.yaml_to_string(cesar)
+    print(type(Serialization.instance_from_yaml_string(cesar, st)),
+          Serialization.instance_from_yaml_string(cesar, st))
     print()
 
-    cesar.json_to_file("cesar.json")
+    Serialization.json_to_file(cesar, "cesar.json")
     Serialization.pickle_to_file(cesar, "cesar.pickle")
-    cesar.yaml_to_file("cesar.yaml")
-    print("JSON-->", type(cesar.instance_from_json_file("cesar.json")), cesar.instance_from_json_file("cesar.json"))
+    Serialization.yaml_to_file(cesar, "cesar.yaml")
+    print("JSON-->", type(Serialization.instance_from_json_file(cesar, "cesar.json")),
+          Serialization.instance_from_json_file(cesar, "cesar.json"))
     print("Pickle -->", type(Serialization.instance_from_pickle_file("cesar.pickle")),
           Serialization.instance_from_pickle_file("cesar.pickle"))
-    print("Yaml -->", type(cesar.instance_from_yaml_file("cesar.yaml")),
-          cesar.instance_from_yaml_file("cesar.yaml"))
+    print("Yaml -->", type(Serialization.instance_from_yaml_file(cesar, "cesar.yaml")),
+          Serialization.instance_from_yaml_file(cesar, "cesar.yaml"))

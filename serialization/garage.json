@@ -1,9 +1,9 @@
 {
     "cars": [
-        "{\"car_type\": \"Wagon\", \"producer\": \"Bugatti\", \"price\": 10759.74, \"number\": \"e6bce1bf-14a1-404b-abce-c09001621efe\", \"mileage\": 35708.37}",
-        "{\"car_type\": \"Wagon\", \"producer\": \"Bugatti\", \"price\": 10759.74, \"number\": \"e6bce1bf-14a1-404b-abce-c09001621efe\", \"mileage\": 35708.37}"
+        "{\"car_type\": \"Truck\", \"producer\": \"BENTLEY\", \"price\": 17682.49, \"number\": \"9d256ac2-e357-4b84-b479-8b9471428c9a\", \"mileage\": 3181.94}",
+        "{\"car_type\": \"Truck\", \"producer\": \"BENTLEY\", \"price\": 17682.49, \"number\": \"9d256ac2-e357-4b84-b479-8b9471428c9a\", \"mileage\": 3181.94}"
     ],
     "places": 5,
-    "owner": "5d96614d-d862-4331-923b-41c68c4509be",
-    "town": "Amsterdam"
+    "owner": "e4150a96-ac65-4532-819f-81a697cbdb49",
+    "town": "Kiev"
 }

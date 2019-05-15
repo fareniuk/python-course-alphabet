@@ -1,6 +1,6 @@
 Car:
-  car_type: Wagon
-  producer: Bugatti
-  price: 10759.74
-  number: e6bce1bf-14a1-404b-abce-c09001621efe
-  mileage: 35708.37
+  car_type: Truck
+  producer: BENTLEY
+  price: 17682.49
+  number: 9d256ac2-e357-4b84-b479-8b9471428c9a
+  mileage: 3181.94
