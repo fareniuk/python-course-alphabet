@@ -36,6 +36,10 @@ class MyYAML(YAML):
             return stream.getvalue()
 
 
+yaml = YAML()
+my_yaml = MyYAML()
+
+
 class Serialization:
     # JSON
     @staticmethod
@@ -101,8 +105,6 @@ class Serialization:
             return obj.from_yaml(yaml.load(f))
 
 
-yaml = YAML()
-my_yaml = MyYAML()
 # _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
 @functools.total_ordering
@@ -221,21 +223,21 @@ class Garage:
     def __repr__(self):
         return f"Garage(town='{self.town}', places='{self.places}', owner='{self.owner}', cars='{self.cars}')"
 
-    def add(self, car):
+    def add(self, c):
         if len(self.cars) < self.places:
-            self.cars.append(car)
+            self.cars.append(c)
         else:
             raise Exception('No place available in ', self)
 
-    def remove(self, car):
-        if car in self.cars:
-            self.cars.remove(car)
-            print(f"Car: '{car}' removed from garage")
+    def remove(self, c):
+        if c in self.cars:
+            self.cars.remove(c)
+            print(f"Car: '{c}' removed from garage")
         else:
-            raise Exception(f"There is no '{car}' in this garage")
+            raise Exception(f"There is no '{c}' in this garage")
 
     def hit_hat(self):
-        return sum(car.price for car in self.cars)
+        return sum(c.price for c in self.cars)
 
 # _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_
@@ -286,13 +288,13 @@ class Cesar:
         return f"Cesar(name='{self.name}', registerID='{self.register_id}' garages='{self.garages}')"
 
     def hit_hat(self):
-        return sum(garage.hit_hat() for garage in self.garages)
+        return sum(g.hit_hat() for g in self.garages)
 
     def garage_count(self):
         return len(self.garages)
 
     def cars_count(self):
-        return sum(len(garage.cars) for garage in self.garages)
+        return sum(len(g.cars) for g in self.garages)
 
     def place_available(self):
         for i in self.garages:
@@ -300,13 +302,13 @@ class Cesar:
                 return True
         return False
 
-    def add_car(self, car: Car, garage=None):
-        if garage is None:
-            max(self.garages, key=lambda x: (x.places - len(x.cars))).add(car) if self.place_available() else \
+    def add_car(self, c: Car, g=None):
+        if g is None:
+            max(self.garages, key=lambda x: (x.places - len(x.cars))).add(c) if self.place_available() else \
                 print('if self.place_available():')
-        elif garage in self.garages:
-            garage.add(car) if car not in garage.cars else print("The car is already in the garage")
-        elif garage not in self.garages:
+        elif g in self.garages:
+            g.add(c) if c not in g.cars else print("The car is already in the garage")
+        elif g not in self.garages:
             print("You can not add a car to someone else's garage")
 
     def __eq__(self, other: Cesar):

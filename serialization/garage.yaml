@@ -1,9 +1,9 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Truck\n  producer: BENTLEY\n  price: 17682.49\n  number: 9d256ac2-e357-4b84-b479-8b9471428c9a\n\
-    \  mileage: 3181.94\n"
-  - "Car:\n  car_type: Truck\n  producer: BENTLEY\n  price: 17682.49\n  number: 9d256ac2-e357-4b84-b479-8b9471428c9a\n\
-    \  mileage: 3181.94\n"
+  - "Car:\n  car_type: Sports Car\n  producer: BENTLEY\n  price: 12389.67\n  number:\
+    \ a0d8e88a-e60f-4249-9d62-e189c2856ea4\n  mileage: 70344.82\n"
+  - "Car:\n  car_type: Sports Car\n  producer: BENTLEY\n  price: 12389.67\n  number:\
+    \ a0d8e88a-e60f-4249-9d62-e189c2856ea4\n  mileage: 70344.82\n"
   places: 5
-  owner: e4150a96-ac65-4532-819f-81a697cbdb49
-  town: Kiev
+  owner: 3f095828-a777-42f9-b537-8c025b36923e
+  town: Paris

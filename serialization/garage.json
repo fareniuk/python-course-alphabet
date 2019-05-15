@@ -1,9 +1,9 @@
 {
     "cars": [
-        "{\"car_type\": \"Truck\", \"producer\": \"BENTLEY\", \"price\": 17682.49, \"number\": \"9d256ac2-e357-4b84-b479-8b9471428c9a\", \"mileage\": 3181.94}",
-        "{\"car_type\": \"Truck\", \"producer\": \"BENTLEY\", \"price\": 17682.49, \"number\": \"9d256ac2-e357-4b84-b479-8b9471428c9a\", \"mileage\": 3181.94}"
+        "{\"car_type\": \"Sports Car\", \"producer\": \"BENTLEY\", \"price\": 12389.67, \"number\": \"a0d8e88a-e60f-4249-9d62-e189c2856ea4\", \"mileage\": 70344.82}",
+        "{\"car_type\": \"Sports Car\", \"producer\": \"BENTLEY\", \"price\": 12389.67, \"number\": \"a0d8e88a-e60f-4249-9d62-e189c2856ea4\", \"mileage\": 70344.82}"
     ],
     "places": 5,
-    "owner": "e4150a96-ac65-4532-819f-81a697cbdb49",
-    "town": "Kiev"
+    "owner": "3f095828-a777-42f9-b537-8c025b36923e",
+    "town": "Paris"
 }
