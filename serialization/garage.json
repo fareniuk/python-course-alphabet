@@ -1,9 +1,9 @@
 {
     "cars": [
-        "{\"car_type\": \"Luxury Car\", \"producer\": \"Ford\", \"price\": 59107.39, \"number\": \"607f2dd9-6ff8-406a-b76e-7888cb989311\", \"mileage\": 26392.95}",
-        "{\"car_type\": \"Luxury Car\", \"producer\": \"Ford\", \"price\": 59107.39, \"number\": \"607f2dd9-6ff8-406a-b76e-7888cb989311\", \"mileage\": 26392.95}"
+        "{\"car_type\": \"Wagon\", \"producer\": \"Bugatti\", \"price\": 10759.74, \"number\": \"e6bce1bf-14a1-404b-abce-c09001621efe\", \"mileage\": 35708.37}",
+        "{\"car_type\": \"Wagon\", \"producer\": \"Bugatti\", \"price\": 10759.74, \"number\": \"e6bce1bf-14a1-404b-abce-c09001621efe\", \"mileage\": 35708.37}"
     ],
     "places": 5,
-    "owner": "b634ae0e-5b9a-424e-ad7e-8453bc65e96a",
-    "town": "Kiev"
+    "owner": "5d96614d-d862-4331-923b-41c68c4509be",
+    "town": "Amsterdam"
 }
