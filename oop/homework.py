@@ -302,11 +302,19 @@ class House:
         else:
             self.__walls.append(Wall(width, height))
 
-    def create_roof(self):
-        pass
+    def create_roof(self, width, height, roof_type):
+        if width == 0 or height == 0:
+            raise ValueError("Value must be not 0")
+        elif self.__roof:
+            raise ValueError("The house can not have two roofs")
+        else:
+            self.__roof = Roof(width, height, roof_type)
 
-    def create_window(self):
-        pass
+    def create_window(self, width, height):
+        if width == 0 or height == 0:
+            raise ValueError("Value must be not 0")
+        else:
+            self.__windows.append(Window(width, height))
 
     def create_door(self):
         pass
