@@ -41,8 +41,6 @@ class Cat:
         'fodder': 10,
         'apple': 5,
         'milk': 2,
-        'gazelle': 30,
-        'rabbit': 15
     }
 
     def __init__(self, age):
