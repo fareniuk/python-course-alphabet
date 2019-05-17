@@ -289,10 +289,18 @@ class House:
     """
 
     def __init__(self):
-        pass
+        __walls = []
+        __windows = []
+        __roof = None
+        __door = None
 
-    def create_wall(self):
-        pass
+    def create_wall(self, width, height):
+        if width == 0 or height == 0:
+            raise ValueError("Value must be not 0")
+        elif len(self.__walls) >= 4:
+            raise ValueError("Our house can not have more than 4 walls")
+        else:
+            self.__walls.append(Wall(width, height))
 
     def create_roof(self):
         pass
