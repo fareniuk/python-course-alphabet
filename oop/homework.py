@@ -289,10 +289,10 @@ class House:
     """
 
     def __init__(self):
-        __walls = []
-        __windows = []
-        __roof = None
-        __door = None
+        self.__walls = []
+        self.__windows = []
+        self.__roof = None
+        self.__door = None
 
     def create_wall(self, width, height):
         if width == 0 or height == 0:
@@ -340,16 +340,16 @@ class House:
         self.__door.update_metal_price(price)
 
     def get_roof_square(self):
-        pass
+        return self.__roof.roof_square()
 
     def get_walls_square(self):
-        pass
+        return sum([wall.wall_square() for wall in self.__walls])
 
     def get_windows_square(self):
-        pass
+        return sum([window.window_square() for window in self.__windows])
 
     def get_door_square(self):
-        pass
+        return self.__door.door_square()
 
     def get_number_of_rolls_of_wallpapers(self):
         pass
