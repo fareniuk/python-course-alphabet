@@ -316,23 +316,28 @@ class House:
         else:
             self.__windows.append(Window(width, height))
 
-    def create_door(self):
-        pass
+    def create_door(self, width, height):
+        if width == 0 or height == 0:
+            raise ValueError("Value must be not 0")
+        elif self.__door:
+            raise ValueError("The house can not have two doors")
+        else:
+            self.__door = Door(width, height)
 
     def get_count_of_walls(self):
-        pass
+        return len(self.__walls)
 
     def get_count_of_windows(self):
-        pass
+        return len(self.__windows)
 
-    def get_door_price(self):
-        pass
+    def get_door_price(self, material):
+        return self.__door.door_price(material)
 
-    def update_wood_price(self):
-        pass
+    def update_wood_price(self, price):
+        self.__door.update_wood_price(price)
 
-    def update_metal_price(self):
-        pass
+    def update_metal_price(self, price):
+        self.__door.update_metal_price(price)
 
     def get_roof_square(self):
         pass
