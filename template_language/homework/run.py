@@ -3,7 +3,7 @@ import json
 from flask import Flask, render_template
 
 app = Flask(__name__)
-
+start_year = 2010
 
 with open('movies.json') as f:
     MOVIES = json.load(f)
@@ -11,12 +11,12 @@ with open('movies.json') as f:
 
 @app.route('/')
 def home_page():
-    return render_template('home.html', title='Home')
+    return render_template('home.html', title='Home', author='Andrii Fareniuk')
 
 
 @app.route('/movies')
 def movies_page():
-    return render_template('movies.html', title='Movies list', movies=MOVIES)
+    return render_template('movies.html', title='Movies list', movies=MOVIES, start_year=start_year)
 
 
 @app.route('/<title>')

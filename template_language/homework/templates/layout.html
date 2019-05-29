@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
-    <title>Top IMDb</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,12 +21,8 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/movies">Movies</a>
-                </li>
+                {{ nav_link('home_page', 'Home') }}
+                {{ nav_link('movies_page', 'Movies') }}
             </ul>
         </div>
     </div>
@@ -34,7 +30,7 @@
 
 
 <div class="container h-100 d-flex flex-column">
-    {#  Insert any templates here  #}
+    {% block content %}{% endblock %}
 </div>
 
 
