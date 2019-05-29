@@ -10,7 +10,7 @@
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-lg-4">
-                            <a href="/{{ movie.get('title') }}">
+                            <a href="{{ url_for('movie_page', title=movie.get('title')) }}">
                                 <img src="{{ movie.get('poster') }}"
                                     class="card-img" alt="{{ movie.get('title') }}">
                             </a>
@@ -18,7 +18,9 @@
                         <div class="col-lg-8">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <a href="/{{ movie.get('title') }}">{{ movie.get('title') }}</a>
+                                    <a href="{{ url_for('movie_page', title=movie.get('title')) }}">
+                                        {{ movie.get('title') }}
+                                    </a>
                                 </h5>
                                 <p class="card-text">
                                     {{ movie.get('plot') }}
