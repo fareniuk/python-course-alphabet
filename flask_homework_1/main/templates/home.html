@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+<main role="main" class="inner cover my-auto text-center">
+    <p class="lead mt-5">
+        <a href="{{ url_for('fruits.fruits_page')}}" class="btn btn-lg btn-primary">
+            Fruits Page
+        </a>
+    </p>
+    <p class="lead mt-5">
+        <a href="{{ url_for('vegetables.vegetables_page')}}" class="btn btn-lg btn-primary">
+            Vegetables Page
+        </a>
+    </p>
+</main>
+<footer class="mastfoot mt-auto text-center">
+    <div class="inner">
+        <p>Simple Flask Web APP by FrAnK</p>
+    </div>
+</footer>
+{% endblock %}

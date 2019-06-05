@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <h1 class="my-5 py-5 text-center">{{ title }}</h1>
+
+    <form method="POST">
+        <input name="_method" type="hidden" value="POST">
+        <div class="form-row">
+            <h2 for="title">Input to create:</h2>
+            <div >
+                <input name="title" type="text" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+        </div>
+    </form>
+
+    <br>
+
+        {% for vegetable in vegetables_list %}
+            <li class="d-flex justify-content-between">
+                <div class="">{{ vegetable }}</div>
+                <form method="POST">
+                    <input name="_method" type="hidden" value="DELETE">
+                    <input name="vegetable" type="hidden" value="{{ vegetable }}">
+                    <button type="submit" class="btn btn-dark">Remove</button>
+                </form>
+
+        {% endfor %}
+{% endblock %}
