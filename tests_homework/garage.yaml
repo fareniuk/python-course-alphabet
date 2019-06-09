@@ -1,0 +1,9 @@
+Garage:
+  cars:
+  - "Car:\n  car_type: Van\n  producer: Lamborghini\n  price: 7423.89\n  number: 463af4e2-8331-46d1-93bc-0ff9910fa4e7\n\
+    \  mileage: 18867.3\n"
+  - "Car:\n  car_type: Van\n  producer: Lamborghini\n  price: 7423.89\n  number: 463af4e2-8331-46d1-93bc-0ff9910fa4e7\n\
+    \  mileage: 18867.3\n"
+  places: 5
+  owner: 96ecc81d-2f21-4c36-b7d4-1c3f0ce46714
+  town: Paris

@@ -7,7 +7,7 @@ source venv/bin/activate
  pip install -r requirements.txt
 
 
-fuser -n tcp -k 5000
+fuser -n tcp -k 5000 (clear port)
 
 
-export FLASK_ENV=development #rezhym razrabotchuka(debuger)
+export FLASK_ENV=development #(dev mod)
