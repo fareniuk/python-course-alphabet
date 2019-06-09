@@ -1,4 +1,4 @@
-# Primer on Jinja Templating
+ # Primer on Jinja Templating
 
 Right out of the box, Flask includes the powerful [Jinja](http://jinja.pocoo.org/docs/) templating language. It's modeled after Django templates (but it renders much faster) and, although, Flask does not force you to use any templating language, it assumes that you'll be using Jinja since it does come pre-installed.
 
