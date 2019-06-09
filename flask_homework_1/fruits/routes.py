@@ -4,7 +4,7 @@ fruits = Blueprint('fruits', __name__, template_folder='templates')
 fruits_list = ['Orange', 'Banana', 'Apricot']
 
 
-@fruits.route("/fruits", methods=["GET", "POST", "DELETE", "PATCH"])
+@fruits.route("/fruits", methods=["GET", "POST", "DELETE"])
 def fruits_page():
     if request.method == "POST" and request.form['_method'] == "POST":
         create_fruit()
@@ -16,7 +16,8 @@ def fruits_page():
 
 def create_fruit():
     title = request.form['title']
-    fruits_list.append(title)
+    if title:
+        fruits_list.append(title)
 
 
 def remove_fruit():

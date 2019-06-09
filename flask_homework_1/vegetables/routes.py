@@ -16,7 +16,8 @@ def vegetables_page():
 
 def create_vegetable():
     title = request.form['title']
-    vegetables_list.append(title)
+    if title:
+        vegetables_list.append(title)
 
 
 def remove_vegetable():
