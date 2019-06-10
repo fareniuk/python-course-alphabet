@@ -111,7 +111,7 @@ class Serialization:
 class Car:
     def __init__(self, price: float, car_type: CARS_TYPES, producer: CARS_PRODUCER, mileage: float, number=None):
         self.price = price
-        self.number = number if number else uuid.uuid4()
+        self.number = number if number else str(uuid.uuid4())
         self.mileage = mileage
         if producer in CARS_PRODUCER:
             self.producer = producer
@@ -124,7 +124,7 @@ class Car:
 
     @staticmethod
     def to_json(obj: Car):
-        data = {"car_type": obj.car_type, "producer": obj.producer, "price": obj.price, "number": str(obj.number),
+        data = {"car_type": obj.car_type, "producer": obj.producer, "price": obj.price, "number": obj.number,
                 "mileage": obj.mileage}
         return data
 
@@ -162,24 +162,25 @@ class Car:
             f" number='{self.number}', mileage='{self.mileage}')"
 
     def change_number(self):
-        self.number = uuid.uuid4()
+        self.number = str(uuid.uuid4())
 
     def __lt__(self, other: Car):
-        self_param_list = [self.price, str(self.number), self.mileage, self.producer, self.car_type]
-        other_param_list = [other.price, str(other.number), other.mileage, other.producer, other.car_type]
+        self_param_list = [self.price, self.number, self.mileage, self.producer, self.car_type]
+        other_param_list = [other.price, other.number, other.mileage, other.producer, other.car_type]
         return self_param_list < other_param_list
 
     def __eq__(self, other: Car):
-        self_param_list = [self.price, str(self.number), self.mileage, self.producer, self.car_type]
-        other_param_list = [other.price, str(other.number), other.mileage, other.producer, other.car_type]
+        self_param_list = [self.price, self.number, self.mileage, self.producer, self.car_type]
+        other_param_list = [other.price, other.number, other.mileage, other.producer, other.car_type]
         return self_param_list == other_param_list
 
 
+@functools.total_ordering
 class Garage:
     def __init__(self, town: TOWNS, cars: [], places: int, owner=None):
         self.cars = cars if cars else []
         self.places = places
-        self.owner = owner if owner else None
+        self.owner = str(owner) if owner else None
         if town in TOWNS:
             self.town = town
         else:
@@ -189,18 +190,18 @@ class Garage:
     def to_json(obj: Garage):
         data = {"cars": [Serialization.json_to_string(c) for c in obj.cars],
                 "places": obj.places,
-                "owner": str(obj.owner),
+                "owner": obj.owner,
                 "town": obj.town
                 }
         return data
 
     @staticmethod
     def from_json(data):
-        cars = [Serialization.instance_from_json_string(car, c) for c in data['cars']]
+        cars = [Serialization.instance_from_json_string(Car, c) for c in data['cars']]
         places = data['places']
         owner = data['owner']
         town = data['town']
-        return Garage(cars=cars, places=places, owner=owner, town=town)
+        return Garage(town=town, cars=cars, places=places, owner=owner)
 
     def __setstate__(self, state):
         self.__dict__ = state
@@ -218,7 +219,7 @@ class Garage:
 
     @classmethod
     def from_yaml(cls, data):
-        cars = [Serialization.instance_from_yaml_string(car, c) for c in data['Garage']['cars']]
+        cars = [Serialization.instance_from_yaml_string(Car, c) for c in data['Garage']['cars']]
         places = data['Garage']['places']
         owner = data['Garage']['owner']
         town = data['Garage']['town']
@@ -242,6 +243,16 @@ class Garage:
 
     def hit_hat(self):
         return sum(c.price for c in self.cars)
+
+    def __lt__(self, other: Garage):
+        self_param_list = [self.town, self.cars, self.places, self.owner]
+        other_param_list = [other.town, other.cars, other.places, other.owner]
+        return self_param_list < other_param_list
+
+    def __eq__(self, other: Garage):
+        self_param_list = [self.town, self.cars, self.places, self.owner]
+        other_param_list = [other.town, other.cars, other.places, other.owner]
+        return self_param_list == other_param_list
 
 # _le_ and other comparison operators are defined by
 # @functools.total_ordering using provided _lt_ and _eq_

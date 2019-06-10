@@ -69,5 +69,56 @@ class CarTestCase(unittest.TestCase):
         self.assertEqual(car, car_yaml)
 
 
+class GarageTestCase(unittest.TestCase):
+
+    def test_equal(self):
+        garage1 = data_init_garage()
+        garage2 = Garage(garage1.town, garage1.cars, garage1.places, garage1.owner)
+        self.assertEqual(garage1, garage2)
+
+    def test_not_equal(self):
+        garage1 = data_init_garage()
+        garage2 = data_init_garage()
+        self.assertNotEqual(garage1, garage2)
+
+    def test_serialization(self):
+        garage = data_init_garage()
+        Serialization.json_to_file(garage, "fixtures/garage1.json")
+        Serialization.pickle_to_file(garage, "fixtures/garage1.pickle")
+        Serialization.yaml_to_file(garage, "fixtures/garage1.yaml")
+        garage_json = Serialization.instance_from_json_file(Garage, "fixtures/garage1.json")
+        garage_pickle = Serialization.instance_from_pickle_file("fixtures/garage1.pickle")
+        garage_yaml = Serialization.instance_from_yaml_file(Garage, "fixtures/garage1.yaml")
+        self.assertEqual(garage, garage_json)
+        self.assertEqual(garage, garage_pickle)
+        self.assertEqual(garage, garage_yaml)
+
+    def test_deserialization(self):
+        car_data = [
+        "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
+        "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
+        "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
+        ]
+        car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
+        garage = Garage("Rome", car_list, 5, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+        garage_json = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
+        garage_pickle = Serialization.instance_from_pickle_file("fixtures/garage.pickle")
+        garage_yaml = Serialization.instance_from_yaml_file(Garage, "fixtures/garage.yaml")
+        self.assertEqual(garage, garage_json)
+        self.assertEqual(garage, garage_pickle)
+        self.assertEqual(garage, garage_yaml)
+
+    def test_hit_hat(self):
+        car_data = [
+            "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
+            "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
+            "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
+        ]
+        car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
+        garage = Garage("Rome", car_list, 5, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+        self.assertEqual(garage.hit_hat(), 123201.72)
+        self.assertNotEqual(garage.hit_hat(), 123687768)
+
+
 if __name__ == '__main__':
     unittest.main()
