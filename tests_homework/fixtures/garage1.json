@@ -1,10 +1,10 @@
 {
     "cars": [
-        "{\"car_type\": \"Truck\", \"producer\": \"Lamborghini\", \"price\": 8748.11, \"number\": \"b6260229-f258-47b9-844a-898bebc5a62d\", \"mileage\": 83281.17}",
-        "{\"car_type\": \"Sports Car\", \"producer\": \"Chevrolet\", \"price\": 65046.72, \"number\": \"14f05b80-1b6f-44bb-aa88-55d43fef8810\", \"mileage\": 86383.79}",
-        "{\"car_type\": \"Sports Car\", \"producer\": \"Chevrolet\", \"price\": 72432.6, \"number\": \"bd31f46b-fad9-405a-b57a-e54b28077734\", \"mileage\": 50381.74}"
+        "{\"car_type\": \"Coupe\", \"producer\": \"Bugatti\", \"price\": 56289.76, \"number\": \"1846907e-dcd8-4604-a8be-0494ca17e515\", \"mileage\": 79739.5}",
+        "{\"car_type\": \"Truck\", \"producer\": \"Lamborghini\", \"price\": 17178.47, \"number\": \"0bb18ba8-7e95-42d0-8094-088e0ee698cb\", \"mileage\": 71337.24}",
+        "{\"car_type\": \"SUV\", \"producer\": \"BMW\", \"price\": 20706.55, \"number\": \"6d4588a3-03dd-4a27-aab6-ea03a27d9604\", \"mileage\": 99475.01}"
     ],
     "places": 5,
-    "owner": "65261486-15b8-4f2e-ac04-550b866626a0",
-    "town": "Rome"
+    "owner": "50fe614e-2c3c-48ea-9978-ad44fb8bc233",
+    "town": "London"
 }

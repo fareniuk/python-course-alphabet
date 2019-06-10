@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Truck\n  producer: Lamborghini\n  price: 8748.11\n  number:\
-    \ b6260229-f258-47b9-844a-898bebc5a62d\n  mileage: 83281.17\n"
-  - "Car:\n  car_type: Sports Car\n  producer: Chevrolet\n  price: 65046.72\n  number:\
-    \ 14f05b80-1b6f-44bb-aa88-55d43fef8810\n  mileage: 86383.79\n"
-  - "Car:\n  car_type: Sports Car\n  producer: Chevrolet\n  price: 72432.6\n  number:\
-    \ bd31f46b-fad9-405a-b57a-e54b28077734\n  mileage: 50381.74\n"
+  - "Car:\n  car_type: Coupe\n  producer: Bugatti\n  price: 56289.76\n  number: 1846907e-dcd8-4604-a8be-0494ca17e515\n\
+    \  mileage: 79739.5\n"
+  - "Car:\n  car_type: Truck\n  producer: Lamborghini\n  price: 17178.47\n  number:\
+    \ 0bb18ba8-7e95-42d0-8094-088e0ee698cb\n  mileage: 71337.24\n"
+  - "Car:\n  car_type: SUV\n  producer: BMW\n  price: 20706.55\n  number: 6d4588a3-03dd-4a27-aab6-ea03a27d9604\n\
+    \  mileage: 99475.01\n"
   places: 5
-  owner: 65261486-15b8-4f2e-ac04-550b866626a0
-  town: Rome
+  owner: 50fe614e-2c3c-48ea-9978-ad44fb8bc233
+  town: London

@@ -172,6 +172,24 @@ class CesarTestCase(unittest.TestCase):
         self.assertTrue(cesar.equal(cesar_pickle))
         self.assertTrue(cesar.equal(cesar_yaml))
 
+    def test_hit_hat(self):
+        cesar = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        self.assertEqual(cesar.hit_hat(), 426710.61000000004)
+        self.assertNotEqual(cesar.hit_hat(), 123687768)
+
+    def test_garage_count(self):
+        cesar = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        self.assertEqual(cesar.garage_count(), 3)
+        self.assertNotEqual(cesar.garage_count(), 18)
+
+    def test_cars_count(self):
+        cesar = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        self.assertEqual(cesar.cars_count(), 9)
+        self.assertNotEqual(cesar.cars_count(), 12)
+
+    def test_add_car(self):
+        pass
+
 
 
 if __name__ == '__main__':
