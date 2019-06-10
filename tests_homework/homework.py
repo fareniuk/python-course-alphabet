@@ -261,12 +261,12 @@ class Cesar:
     def __init__(self, name: str, garages=None, register_id=None):
         self.name = name
         self.garages = garages if garages else []
-        self.register_id = register_id if register_id else uuid.uuid4()
+        self.register_id = register_id if register_id else str(uuid.uuid4())
 
     @staticmethod
     def to_json(obj: Cesar):
         data = {"name": obj.name,
-                "register_id": str(obj.register_id),
+                "register_id": obj.register_id,
                 "garages": [Serialization.json_to_string(g) for g in obj.garages],
                 }
         return data
@@ -275,7 +275,7 @@ class Cesar:
     def from_json(data):
         name = data['name']
         register_id = data['register_id']
-        garages = [Serialization.instance_from_json_string(garage, g) for g in data['garages']]
+        garages = [Serialization.instance_from_json_string(Garage, g) for g in data['garages']]
         return Cesar(name=name, register_id=register_id, garages=garages)
 
     def __setstate__(self, state):
@@ -286,7 +286,7 @@ class Cesar:
 
     def to_yaml(self):
         data = {"Cesar": {"name": self.name,
-                          "register_id": str(self.register_id),
+                          "register_id": self.register_id,
                           "garages": [Serialization.yaml_to_string(g) for g in self.garages]
                           }
                 }
@@ -296,7 +296,7 @@ class Cesar:
     def from_yaml(cls, data):
         name = data['Cesar']['name']
         register_id = data['Cesar']['register_id']
-        garages = [Serialization.instance_from_yaml_string(garage, g) for g in data['Cesar']['garages']]
+        garages = [Serialization.instance_from_yaml_string(Garage, g) for g in data['Cesar']['garages']]
         return Cesar(name=name, register_id=register_id, garages=garages)
 
     def __repr__(self):
@@ -329,8 +329,16 @@ class Cesar:
     def __eq__(self, other: Cesar):
         return self.hit_hat() == other.hit_hat()
 
+    def equal(self, other: Cesar):
+        self_list = [self.name, self.garages, self.register_id]
+        other_list = [other.name, self.garages, self.register_id]
+        return self_list == other_list
+
     def __lt__(self, other: Cesar):
         return self.hit_hat() < other.hit_hat()
+
+
+
 
 def data_init_car():
     return Car(

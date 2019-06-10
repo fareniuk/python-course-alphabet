@@ -1,10 +1,10 @@
 {
     "cars": [
-        "{\"car_type\": \"Crossover\", \"producer\": \"Buick\", \"price\": 76004.49, \"number\": \"f6887385-7fac-466f-b61e-bad04b87e857\", \"mileage\": 4527.47}",
-        "{\"car_type\": \"Sports Car\", \"producer\": \"BMW\", \"price\": 22555.73, \"number\": \"c63f92b1-d583-4638-a5f0-34c479044e2d\", \"mileage\": 58342.59}",
-        "{\"car_type\": \"SUV\", \"producer\": \"Chevrolet\", \"price\": 59160.28, \"number\": \"9d7d8ed1-8420-4413-acb6-636cbd38fb0a\", \"mileage\": 46948.37}"
+        "{\"car_type\": \"Truck\", \"producer\": \"Lamborghini\", \"price\": 8748.11, \"number\": \"b6260229-f258-47b9-844a-898bebc5a62d\", \"mileage\": 83281.17}",
+        "{\"car_type\": \"Sports Car\", \"producer\": \"Chevrolet\", \"price\": 65046.72, \"number\": \"14f05b80-1b6f-44bb-aa88-55d43fef8810\", \"mileage\": 86383.79}",
+        "{\"car_type\": \"Sports Car\", \"producer\": \"Chevrolet\", \"price\": 72432.6, \"number\": \"bd31f46b-fad9-405a-b57a-e54b28077734\", \"mileage\": 50381.74}"
     ],
     "places": 5,
-    "owner": "6e520f76-5c13-4099-bbbc-04aaad469388",
-    "town": "Paris"
+    "owner": "65261486-15b8-4f2e-ac04-550b866626a0",
+    "town": "Rome"
 }

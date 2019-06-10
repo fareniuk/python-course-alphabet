@@ -1,28 +1,27 @@
 Cesar:
-  name: Putler
-  register_id: e5ff10a0-3ecb-42bc-b8ef-dccebf386c54
+  name: Kulia_v_lob
+  register_id: fdec5ffb-f6e7-4485-a62f-68884f703523
   garages:
-  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Sports Car\\n  producer: Dodge\\n\
-    \  price: 13524.99\\n  number:\\\n    \\ fd32780e-b9e6-4c11-9e18-a4a671af9036\\\
-    n  mileage: 99024.61\\n\"\n  - \"Car:\\n  car_type: Van\\n  producer: Chevrolet\\\
-    n  price: 55460.79\\n  number: 56920e39-289b-499c-b171-af0a4bb495af\\n\\\n   \
-    \ \\  mileage: 7550.92\\n\"\n  - \"Car:\\n  car_type: Coupe\\n  producer: BMW\\\
-    n  price: 43946.06\\n  number: 7ca2cf8e-31a1-4753-84fc-6e440db0f97c\\n\\\n   \
-    \ \\  mileage: 63346.5\\n\"\n  places: 5\n  owner: 8cbab588-e3ef-4b54-883a-91e5cbea91dd\n\
-    \  town: Prague\n"
-  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Sports Car\\n  producer: Lamborghini\\\
-    n  price: 13078.25\\n  number:\\\n    \\ 62cd83e5-1ea7-4276-899c-def1b53ddf89\\\
-    n  mileage: 7688.36\\n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: Buick\\\
-    n  price: 71958.58\\n  number: aa18dacf-df12-4648-9c68-3f343af76656\\n\\\n   \
-    \ \\  mileage: 33325.21\\n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: Dodge\\\
-    n  price: 43107.26\\n  number: a848543e-5141-4cf0-9e72-185e6ad1f91a\\n\\\n   \
-    \ \\  mileage: 57451.85\\n\"\n  places: 5\n  owner: 280309aa-9529-4246-b983-cc8f87686d0d\n\
-    \  town: Amsterdam\n"
-  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Wagon\\n  producer: Chevrolet\\n \
-    \ price: 41532.9\\n  number: 25e8232f-bc41-4973-9349-7dd8fe2317c2\\n\\\n    \\\
-    \  mileage: 83252.93\\n\"\n  - \"Car:\\n  car_type: Diesel\\n  producer: Chery\\\
-    n  price: 25469.26\\n  number: c860c8d4-253e-428f-baea-1b70d69080dd\\n\\\n   \
-    \ \\  mileage: 17269.98\\n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: Ford\\\
-    n  price: 65926.71\\n  number: c550378f-816f-4b4c-92d1-d630a6b8d962\\n\\\n   \
-    \ \\  mileage: 94561.68\\n\"\n  places: 5\n  owner: 1e253ff8-af00-4754-9594-c1a617ec4cff\n\
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Diesel\\n  producer: Chevrolet\\n\
+    \  price: 4066.3\\n  number: 98441254-5626-40be-8ec2-556e15c1adbc\\n\\\n    \\\
+    \  mileage: 83448.34\\n\"\n  - \"Car:\\n  car_type: Sports Car\\n  producer: Ford\\\
+    n  price: 94538.14\\n  number:\\\n    \\ 98cb8d52-736e-44b7-9e93-eae8d359887c\\\
+    n  mileage: 78780.21\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: Buick\\\
+    n  price: 17679.16\\n  number:\\\n    \\ 8f7fc921-d5aa-4a51-b1eb-61885c72e313\\\
+    n  mileage: 92660.66\\n\"\n  places: 5\n  owner: ae642b67-5c48-4831-b093-d8b09204697e\n\
     \  town: Paris\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Crossover\\n  producer: Bugatti\\\
+    n  price: 12055.62\\n  number:\\\n    \\ 1e113ca0-c41d-4983-b968-7b709c938b68\\\
+    n  mileage: 2192.82\\n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: BMW\\n\
+    \  price: 47546.21\\n  number: f3cabeeb-b30e-4eee-a8c1-68da51ac68db\\n\\\n   \
+    \ \\  mileage: 45488.72\\n\"\n  - \"Car:\\n  car_type: Diesel\\n  producer: Lamborghini\\\
+    n  price: 957.01\\n  number:\\\n    \\ 6acbaa43-70a8-4db2-8076-e09bead962a9\\\
+    n  mileage: 47581.99\\n\"\n  places: 5\n  owner: 5b358c0b-ad96-4fc5-a667-84acfe1773c0\n\
+    \  town: Kiev\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Truck\\n  producer: Ford\\n  price:\
+    \ 58446.95\\n  number: 31ccd372-c378-48f1-8b8a-e968e21f3aca\\n\\\n    \\  mileage:\
+    \ 95200.67\\n\"\n  - \"Car:\\n  car_type: Sedan\\n  producer: BMW\\n  price: 44019.4\\\
+    n  number: 770ca4a5-c330-415b-afcf-d94e0fc637ba\\n\\\n    \\  mileage: 43012.51\\\
+    n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: BMW\\n  price: 24119.57\\n \
+    \ number: 6e14c744-eb9e-4ed2-a3f6-37986098a43e\\n\\\n    \\  mileage: 42269.14\\\
+    n\"\n  places: 5\n  owner: cac28bb2-0b92-42c7-877b-c41c70e974a7\n  town: London\n"

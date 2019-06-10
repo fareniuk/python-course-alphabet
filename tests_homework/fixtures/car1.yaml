@@ -1,6 +1,6 @@
 Car:
-  car_type: SUV
-  producer: BMW
-  price: 63184.77
-  number: 8fe91634-37dd-4e7c-9d4e-595d61107634
-  mileage: 87909.34
+  car_type: Sports Car
+  producer: Dodge
+  price: 27859.04
+  number: 07d566d7-19ab-42b0-8395-120df9f6be46
+  mileage: 40112.55

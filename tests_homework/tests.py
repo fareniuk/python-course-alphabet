@@ -68,7 +68,6 @@ class CarTestCase(unittest.TestCase):
         self.assertEqual(car, car_pickle)
         self.assertEqual(car, car_yaml)
 
-
 class GarageTestCase(unittest.TestCase):
 
     def test_equal(self):
@@ -133,6 +132,47 @@ class GarageTestCase(unittest.TestCase):
             self.assertTrue(f"Car: '{car_raise}' removed from garage" in context.exception.args)
         garage.remove(car_valid)
         self.assertNotIn(car_valid, garage.cars)
+
+
+class CesarTestCase(unittest.TestCase):
+    def test_equal(self):
+        cesar1 = date_init_cesar()
+        cesar2 = Cesar(cesar1.name, cesar1.garages, cesar1.register_id)
+        self.assertTrue(cesar1.equal(cesar2))
+
+    def test_not_equal(self):
+        cesar1 = date_init_cesar()
+        cesar2 = date_init_cesar()
+        self.assertFalse(cesar1.equal(cesar2))
+
+    def test_serialization(self):
+        cesar = date_init_cesar()
+        Serialization.json_to_file(cesar, "fixtures/cesar1.json")
+        Serialization.pickle_to_file(cesar, "fixtures/cesar1.pickle")
+        Serialization.yaml_to_file(cesar, "fixtures/cesar1.yaml")
+        cesar_json = Serialization.instance_from_json_file(Cesar, "fixtures/cesar1.json")
+        cesar_pickle = Serialization.instance_from_pickle_file("fixtures/cesar1.pickle")
+        cesar_yaml = Serialization.instance_from_yaml_file(Cesar, "fixtures/cesar1.yaml")
+        self.assertTrue(cesar.equal(cesar_json))
+        self.assertTrue(cesar.equal(cesar_pickle))
+        self.assertTrue(cesar.equal(cesar_yaml))
+
+    def test_deserialization(self):
+        garage_data = [
+        "{\"cars\": [\"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"BMW\\\", \\\"price\\\": 78038.71, \\\"number\\\": \\\"254b106d-452b-4e4d-989f-9434a69890b7\\\", \\\"mileage\\\": 72005.86}\", \"{\\\"car_type\\\": \\\"Crossover\\\", \\\"producer\\\": \\\"Chevrolet\\\", \\\"price\\\": 71032.82, \\\"number\\\": \\\"43228351-71cf-48c2-88e3-b5d0509fd462\\\", \\\"mileage\\\": 40815.66}\", \"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"Chery\\\", \\\"price\\\": 27577.73, \\\"number\\\": \\\"42beba8b-e1e4-4d4c-bb88-46f0ef50bf03\\\", \\\"mileage\\\": 84138.02}\"], \"places\": 5, \"owner\": \"428cd5f1-7646-4016-8e2d-ec26d151fe9b\", \"town\": \"Kiev\"}",
+        "{\"cars\": [\"{\\\"car_type\\\": \\\"Coupe\\\", \\\"producer\\\": \\\"Buick\\\", \\\"price\\\": 38621.58, \\\"number\\\": \\\"e359ed2d-60dd-42c4-a761-8d5634da60ed\\\", \\\"mileage\\\": 7703.62}\", \"{\\\"car_type\\\": \\\"Sports Car\\\", \\\"producer\\\": \\\"Ford\\\", \\\"price\\\": 4948.44, \\\"number\\\": \\\"cab8988e-d033-4b43-966b-e3af6a6b75e6\\\", \\\"mileage\\\": 58175.29}\", \"{\\\"car_type\\\": \\\"SUV\\\", \\\"producer\\\": \\\"Ford\\\", \\\"price\\\": 32144.82, \\\"number\\\": \\\"f11a06f6-912c-4adc-99a3-16f3883d1f4c\\\", \\\"mileage\\\": 27458.44}\"], \"places\": 5, \"owner\": \"98462db8-87c8-4d5a-9f2a-f879187f0e79\", \"town\": \"Berlin\"}",
+        "{\"cars\": [\"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"Dodge\\\", \\\"price\\\": 14991.98, \\\"number\\\": \\\"5c9c7c32-3b41-42e0-9a21-103a1d72730f\\\", \\\"mileage\\\": 67796.76}\", \"{\\\"car_type\\\": \\\"Diesel\\\", \\\"producer\\\": \\\"Chery\\\", \\\"price\\\": 80906.93, \\\"number\\\": \\\"9cb7fef1-9873-4dbc-8984-4db02011d97b\\\", \\\"mileage\\\": 25090.87}\", \"{\\\"car_type\\\": \\\"Coupe\\\", \\\"producer\\\": \\\"Lamborghini\\\", \\\"price\\\": 78447.6, \\\"number\\\": \\\"5add9532-516a-4d97-a381-dddc16259954\\\", \\\"mileage\\\": 76750.82}\"], \"places\": 5, \"owner\": \"39dd22de-5a0c-462f-a13e-24aef4e447f0\", \"town\": \"Rome\"}"
+    ]
+        garage_list = [Serialization.instance_from_json_string(Garage, c) for c in garage_data]
+        cesar = Cesar("Benia", garage_list, "199e4987-9428-4bc4-a26b-1645c7c81cf8")
+        cesar_json = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        cesar_pickle = Serialization.instance_from_pickle_file("fixtures/cesar.pickle")
+        cesar_yaml = Serialization.instance_from_yaml_file(Cesar, "fixtures/cesar.yaml")
+        self.assertTrue(cesar.equal(cesar_json))
+        self.assertTrue(cesar.equal(cesar_pickle))
+        self.assertTrue(cesar.equal(cesar_yaml))
+
+
 
 if __name__ == '__main__':
     unittest.main()

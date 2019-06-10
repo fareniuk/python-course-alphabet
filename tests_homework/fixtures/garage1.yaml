@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Crossover\n  producer: Buick\n  price: 76004.49\n  number:\
-    \ f6887385-7fac-466f-b61e-bad04b87e857\n  mileage: 4527.47\n"
-  - "Car:\n  car_type: Sports Car\n  producer: BMW\n  price: 22555.73\n  number: c63f92b1-d583-4638-a5f0-34c479044e2d\n\
-    \  mileage: 58342.59\n"
-  - "Car:\n  car_type: SUV\n  producer: Chevrolet\n  price: 59160.28\n  number: 9d7d8ed1-8420-4413-acb6-636cbd38fb0a\n\
-    \  mileage: 46948.37\n"
+  - "Car:\n  car_type: Truck\n  producer: Lamborghini\n  price: 8748.11\n  number:\
+    \ b6260229-f258-47b9-844a-898bebc5a62d\n  mileage: 83281.17\n"
+  - "Car:\n  car_type: Sports Car\n  producer: Chevrolet\n  price: 65046.72\n  number:\
+    \ 14f05b80-1b6f-44bb-aa88-55d43fef8810\n  mileage: 86383.79\n"
+  - "Car:\n  car_type: Sports Car\n  producer: Chevrolet\n  price: 72432.6\n  number:\
+    \ bd31f46b-fad9-405a-b57a-e54b28077734\n  mileage: 50381.74\n"
   places: 5
-  owner: 6e520f76-5c13-4099-bbbc-04aaad469388
-  town: Paris
+  owner: 65261486-15b8-4f2e-ac04-550b866626a0
+  town: Rome

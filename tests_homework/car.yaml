@@ -1,6 +1,6 @@
 Car:
-  car_type: SUV
-  producer: Buick
-  price: 56746.09
-  number: 34e51e09-110b-41de-b899-42d14785955b
-  mileage: 46470.75
+  car_type: Diesel
+  producer: Ford
+  price: 24959.41
+  number: 61753d79-6479-45e9-8758-36d452299d83
+  mileage: 77849.22

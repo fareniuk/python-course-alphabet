@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Luxury Car\n  producer: Buick\n  price: 15060.0\n  number:\
-    \ 91c3bed3-f769-4ee3-8b5f-8c63987b2bbf\n  mileage: 43738.51\n"
-  - "Car:\n  car_type: Sedan\n  producer: Buick\n  price: 18442.29\n  number: 889efe41-5f93-4cbd-af0a-d9ff5dca70a9\n\
-    \  mileage: 26300.37\n"
-  - "Car:\n  car_type: Truck\n  producer: Chery\n  price: 90780.15\n  number: 2921688e-8480-43b1-83c4-6623519336ec\n\
-    \  mileage: 99528.13\n"
+  - "Car:\n  car_type: Wagon\n  producer: Chevrolet\n  price: 70864.07\n  number:\
+    \ c6411551-4a7a-481a-ae3f-787b78df6aac\n  mileage: 21223.86\n"
+  - "Car:\n  car_type: Truck\n  producer: Lamborghini\n  price: 19842.42\n  number:\
+    \ 9143c5a2-d25b-4841-be7f-47f3528d04e8\n  mileage: 43634.7\n"
+  - "Car:\n  car_type: Sedan\n  producer: BMW\n  price: 39793.97\n  number: edd0a113-c418-480c-9366-b82e22d58ddf\n\
+    \  mileage: 73133.21\n"
   places: 5
-  owner: 8bc7cdb8-1a68-4211-9d18-0b57ae992567
-  town: Kiev
+  owner: b0185cbe-6b0e-4291-8314-52d17113c17d
+  town: Paris
