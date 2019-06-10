@@ -1,6 +1,8 @@
 import unittest
 import random
 import uuid
+import logging
+from testfixtures import LogCapture
 from homework import Car, Cesar, Garage, Serialization
 from constants import TOWNS, CARS_TYPES, CARS_PRODUCER, CESAR_NAME
 
@@ -188,8 +190,35 @@ class CesarTestCase(unittest.TestCase):
         self.assertNotEqual(cesar.cars_count(), 12)
 
     def test_add_car(self):
-        pass
+        exp_msg_no_place = "No place available"
+        exp_msg_exist = "The car is already in the garage"
+        exp_msg_someone_else_car = "You can not add a car to someone else's garage"
+        cesar = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        car_exist = cesar.garages[0].cars[0]
+        car_someone_else = data_init_car()
+        garage_someone_else = data_init_garage()
+        car = data_init_car()
 
+        cesar.add_car(car)
+        self.assertIn(car, [car for garage in [garage.cars for garage in cesar.garages]])
+
+        with LogCapture(level=logging.WARNING) as logs:
+            cesar.add_car(car_exist, cesar.garages[0])
+            [record] = logs.records
+            self.assertEqual(record.msg, exp_msg_exist)
+
+        with LogCapture(level=logging.WARNING) as logs:
+            cesar.add_car(car_someone_else, garage_someone_else)
+            [record] = logs.records
+            self.assertEqual(record.msg, exp_msg_someone_else_car)
+
+        for garage in cesar.garages:
+            garage.places = len(garage.cars)
+
+        with LogCapture(level=logging.WARNING) as logs:
+            cesar.add_car(car_someone_else)
+            [record] = logs.records
+            self.assertEqual(record.msg, exp_msg_no_place)
 
 
 if __name__ == '__main__':

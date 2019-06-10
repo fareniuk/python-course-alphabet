@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Wagon\n  producer: Chevrolet\n  price: 70864.07\n  number:\
-    \ c6411551-4a7a-481a-ae3f-787b78df6aac\n  mileage: 21223.86\n"
-  - "Car:\n  car_type: Truck\n  producer: Lamborghini\n  price: 19842.42\n  number:\
-    \ 9143c5a2-d25b-4841-be7f-47f3528d04e8\n  mileage: 43634.7\n"
-  - "Car:\n  car_type: Sedan\n  producer: BMW\n  price: 39793.97\n  number: edd0a113-c418-480c-9366-b82e22d58ddf\n\
-    \  mileage: 73133.21\n"
+  - "Car:\n  car_type: Sedan\n  producer: BENTLEY\n  price: 79012.45\n  number: 5bb413a6-ddf2-4f23-a649-9584711cdb34\n\
+    \  mileage: 29514.84\n"
+  - "Car:\n  car_type: Crossover\n  producer: Bugatti\n  price: 22336.81\n  number:\
+    \ 033bc257-7301-494a-af31-82d3f3a954b0\n  mileage: 47866.57\n"
+  - "Car:\n  car_type: Sports Car\n  producer: BENTLEY\n  price: 15802.14\n  number:\
+    \ b9384199-2119-46c1-a95e-14b6fc437802\n  mileage: 23948.09\n"
   places: 5
-  owner: b0185cbe-6b0e-4291-8314-52d17113c17d
-  town: Paris
+  owner: 455bfcc9-148a-4871-b978-598baa8f1b93
+  town: Amsterdam

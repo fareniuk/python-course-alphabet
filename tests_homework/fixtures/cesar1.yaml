@@ -1,0 +1,28 @@
+Cesar:
+  name: Benia
+  register_id: a7f4a5da-d2f9-475a-b60f-4d6e90acaf6b
+  garages:
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Van\\n  producer: Dodge\\n  price:\
+    \ 57585.67\\n  number: c3fa863e-b3f1-46f6-8654-8698b8a38c4d\\n\\\n    \\  mileage:\
+    \ 69760.51\\n\"\n  - \"Car:\\n  car_type: Van\\n  producer: Chevrolet\\n  price:\
+    \ 76103.95\\n  number: 296e050a-9b04-48e0-8a24-ff1c417b0416\\n\\\n    \\  mileage:\
+    \ 93766.6\\n\"\n  - \"Car:\\n  car_type: Coupe\\n  producer: Buick\\n  price:\
+    \ 34184.61\\n  number: 8cac2ee8-bda9-4d60-a842-d5b7edd95082\\n\\\n    \\  mileage:\
+    \ 35302.64\\n\"\n  places: 5\n  owner: 75101fa4-d305-45d4-94a7-2ede8bce5964\n\
+    \  town: London\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Sedan\\n  producer: Chevrolet\\n \
+    \ price: 18560.39\\n  number:\\\n    \\ d67286e7-f221-45d8-a1a5-f5fe42d79f74\\\
+    n  mileage: 76948.72\\n\"\n  - \"Car:\\n  car_type: Coupe\\n  producer: Lamborghini\\\
+    n  price: 11842.91\\n  number:\\\n    \\ 650095dd-07c6-42ca-a74a-b443c7b6b6a5\\\
+    n  mileage: 38782.96\\n\"\n  - \"Car:\\n  car_type: Van\\n  producer: BENTLEY\\\
+    n  price: 40236.77\\n  number: ca99e6b1-9044-41f9-af96-449c62ee0cff\\n\\\n   \
+    \ \\  mileage: 12616.89\\n\"\n  places: 5\n  owner: a8bec7d6-b8e1-4568-8520-7caee0a5b568\n\
+    \  town: Rome\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Luxury Car\\n  producer: BMW\\n  price:\
+    \ 5700.41\\n  number: 7615f3e5-e6c1-42b3-aa75-089227e6c419\\n\\\n    \\  mileage:\
+    \ 94981.78\\n\"\n  - \"Car:\\n  car_type: Diesel\\n  producer: BENTLEY\\n  price:\
+    \ 6968.32\\n  number: a7dff293-762e-4359-a5dc-182b4c5cdd9d\\n\\\n    \\  mileage:\
+    \ 45890.89\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: Ford\\n  price:\
+    \ 96501.05\\n  number: 2f3cc4fd-7ba9-414b-8ceb-ac2c508a0345\\n\\\n    \\  mileage:\
+    \ 55191.71\\n\"\n  places: 5\n  owner: 97b7a978-b844-4319-afcf-fb8fafa2d287\n\
+    \  town: Amsterdam\n"

@@ -1,7 +1,7 @@
 {
-    "car_type": "Van",
-    "producer": "Lamborghini",
-    "price": 4964.38,
-    "number": "df01c0c5-ffd1-4d8e-b4f3-e7bfdd1c0791",
-    "mileage": 50235.24
+    "car_type": "SUV",
+    "producer": "Chevrolet",
+    "price": 48077.24,
+    "number": "10c3aa18-f5b0-4513-b886-3e7f5e977bf9",
+    "mileage": 61709.17
 }

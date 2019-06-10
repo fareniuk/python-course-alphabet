@@ -1,10 +1,10 @@
 {
     "cars": [
-        "{\"car_type\": \"Coupe\", \"producer\": \"Bugatti\", \"price\": 56289.76, \"number\": \"1846907e-dcd8-4604-a8be-0494ca17e515\", \"mileage\": 79739.5}",
-        "{\"car_type\": \"Truck\", \"producer\": \"Lamborghini\", \"price\": 17178.47, \"number\": \"0bb18ba8-7e95-42d0-8094-088e0ee698cb\", \"mileage\": 71337.24}",
-        "{\"car_type\": \"SUV\", \"producer\": \"BMW\", \"price\": 20706.55, \"number\": \"6d4588a3-03dd-4a27-aab6-ea03a27d9604\", \"mileage\": 99475.01}"
+        "{\"car_type\": \"Crossover\", \"producer\": \"Chevrolet\", \"price\": 7261.46, \"number\": \"6fdd5b88-02a4-4479-88ad-d9aa67ae03e7\", \"mileage\": 9811.4}",
+        "{\"car_type\": \"Luxury Car\", \"producer\": \"Lamborghini\", \"price\": 89890.2, \"number\": \"c44fed00-4705-4744-ac40-a122b6fc654a\", \"mileage\": 98435.66}",
+        "{\"car_type\": \"Sedan\", \"producer\": \"Lamborghini\", \"price\": 74670.82, \"number\": \"4110fa0b-9e6a-48b8-98e2-6917ff2aaa9c\", \"mileage\": 54965.21}"
     ],
     "places": 5,
-    "owner": "50fe614e-2c3c-48ea-9978-ad44fb8bc233",
-    "town": "London"
+    "owner": "a2936e93-aa03-4148-b75d-cd7c162f8d38",
+    "town": "Amsterdam"
 }

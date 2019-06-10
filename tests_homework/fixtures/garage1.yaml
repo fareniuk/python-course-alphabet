@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Coupe\n  producer: Bugatti\n  price: 56289.76\n  number: 1846907e-dcd8-4604-a8be-0494ca17e515\n\
-    \  mileage: 79739.5\n"
-  - "Car:\n  car_type: Truck\n  producer: Lamborghini\n  price: 17178.47\n  number:\
-    \ 0bb18ba8-7e95-42d0-8094-088e0ee698cb\n  mileage: 71337.24\n"
-  - "Car:\n  car_type: SUV\n  producer: BMW\n  price: 20706.55\n  number: 6d4588a3-03dd-4a27-aab6-ea03a27d9604\n\
-    \  mileage: 99475.01\n"
+  - "Car:\n  car_type: Crossover\n  producer: Chevrolet\n  price: 7261.46\n  number:\
+    \ 6fdd5b88-02a4-4479-88ad-d9aa67ae03e7\n  mileage: 9811.4\n"
+  - "Car:\n  car_type: Luxury Car\n  producer: Lamborghini\n  price: 89890.2\n  number:\
+    \ c44fed00-4705-4744-ac40-a122b6fc654a\n  mileage: 98435.66\n"
+  - "Car:\n  car_type: Sedan\n  producer: Lamborghini\n  price: 74670.82\n  number:\
+    \ 4110fa0b-9e6a-48b8-98e2-6917ff2aaa9c\n  mileage: 54965.21\n"
   places: 5
-  owner: 50fe614e-2c3c-48ea-9978-ad44fb8bc233
-  town: London
+  owner: a2936e93-aa03-4148-b75d-cd7c162f8d38
+  town: Amsterdam

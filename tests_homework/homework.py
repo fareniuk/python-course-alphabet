@@ -17,6 +17,7 @@ from __future__ import annotations
 import uuid
 import functools
 import random
+import logging
 import json
 import pickle
 import codecs
@@ -320,11 +321,11 @@ class Cesar:
     def add_car(self, c: Car, g=None):
         if g is None:
             max(self.garages, key=lambda x: (x.places - len(x.cars))).add(c) if self.place_available() else \
-                print('if self.place_available():')
+                logging.warning("No place available")
         elif g in self.garages:
-            g.add(c) if c not in g.cars else print("The car is already in the garage")
+            g.add(c) if c not in g.cars else logging.warning("The car is already in the garage")
         elif g not in self.garages:
-            print("You can not add a car to someone else's garage")
+            logging.warning("You can not add a car to someone else's garage")
 
     def __eq__(self, other: Cesar):
         return self.hit_hat() == other.hit_hat()
@@ -337,133 +338,3 @@ class Cesar:
     def __lt__(self, other: Cesar):
         return self.hit_hat() < other.hit_hat()
 
-
-
-
-def data_init_car():
-    return Car(
-        car_type=random.choice(CARS_TYPES),
-        producer=random.choice(CARS_PRODUCER),
-        price=round(random.uniform(1, 100000), 2),
-        mileage=round(random.uniform(1, 100000), 2)
-    )
-
-
-def data_init_garage():
-    cesar_id = uuid.uuid4()
-    return Garage(
-        cars=[data_init_car(), data_init_car(), data_init_car()],
-        town=random.choice(TOWNS),
-        places=5,
-        owner=cesar_id
-    )
-
-
-def date_init_cesar():
-    return Cesar(random.choice(CESAR_NAME), [data_init_garage(), data_init_garage(), data_init_garage()])
-
-
-if __name__ == "__main__":
-
-    cesar_id = uuid.uuid4()
-
-    car = data_init_car()
-
-    garage = data_init_garage()
-
-    cesar = date_init_cesar()
-    print("Car test ==============================================================================")
-    print("Json String")
-    print(type(Serialization.json_to_string(car)), Serialization.json_to_string(car))
-    st = Serialization.json_to_string(car)
-    print(type(Serialization.instance_from_json_string(car, st)),
-          Serialization.instance_from_json_string(car, st))
-    print()
-
-    print("Pickle String")
-    print(type(Serialization.pickle_to_string(car)), Serialization.pickle_to_string(car))
-    st = Serialization.pickle_to_string(car)
-    print(type(Serialization.instance_from_pickle_string(st)),
-          Serialization.instance_from_pickle_string(st))
-    print()
-
-    print("Yaml String")
-    print(type(Serialization.yaml_to_string(car)), Serialization.yaml_to_string(car))
-    st = Serialization.yaml_to_string(car)
-    print(type(Serialization.instance_from_yaml_string(car, st)),
-          Serialization.instance_from_yaml_string(car, st))
-    print()
-
-    Serialization.json_to_file(car, "car.json")
-    Serialization.pickle_to_file(car, "car.pickle")
-    Serialization.yaml_to_file(car, "car.yaml")
-    print("JSON -->", type(Serialization.instance_from_json_file(car, "car.json")),
-          Serialization.instance_from_json_file(car, "car.json"))
-    print("Pickle -->", type(Serialization.instance_from_pickle_file("car.pickle")),
-          Serialization.instance_from_pickle_file("car.pickle"))
-    print("Yaml -->", type(Serialization.instance_from_yaml_file(car, "car.yaml")),
-          Serialization.instance_from_yaml_file(car, "car.yaml"))
-
-    print()
-    print("garage test ==============================================================================")
-    print("Json String")
-    print(type(Serialization.json_to_string(garage)), Serialization.json_to_string(garage))
-    st = Serialization.json_to_string(garage)
-    print(type(Serialization.instance_from_json_string(garage, st)),
-          Serialization.instance_from_json_string(garage, st))
-    print()
-
-    print("Pickle String")
-    print(type(Serialization.pickle_to_string(garage)), Serialization.pickle_to_string(garage))
-    st = Serialization.pickle_to_string(garage)
-    print(type(Serialization.instance_from_pickle_string(st)), Serialization.instance_from_pickle_string(st))
-    print()
-
-    print("Yaml String")
-    print(type(Serialization.yaml_to_string(garage)), Serialization.yaml_to_string(garage))
-    st = Serialization.yaml_to_string(garage)
-    print(st)
-    print(type(Serialization.instance_from_yaml_string(garage, st)),
-          Serialization.instance_from_yaml_string(garage, st))
-
-    Serialization.json_to_file(garage, "garage.json")
-    Serialization.pickle_to_file(garage, "garage.pickle")
-    Serialization.yaml_to_file(garage, "garage.yaml")
-    print("JSON-->", type(Serialization.instance_from_json_file(garage, "garage.json")),
-          Serialization.instance_from_json_file(garage, "garage.json"))
-    print("Pickle -->", type(Serialization.instance_from_pickle_file("garage.pickle")),
-          Serialization.instance_from_pickle_file("garage.pickle"))
-    print("Yaml -->", type(Serialization.instance_from_yaml_file(garage, "garage.yaml")),
-          Serialization.instance_from_yaml_file(garage, "garage.yaml"))
-
-    print()
-    print("cesar test ==============================================================================")
-    print("Json String")
-    print(type(Serialization.json_to_string(cesar)), Serialization.json_to_string(cesar))
-    st = Serialization.json_to_string(cesar)
-    print(type(Serialization.instance_from_json_string(cesar, st)), Serialization.instance_from_json_string(cesar, st))
-    print()
-
-    print("Pickle String")
-    print(type(Serialization.pickle_to_string(cesar)), Serialization.pickle_to_string(cesar))
-    st = Serialization.pickle_to_string(cesar)
-    print(type(Serialization.instance_from_pickle_string(st)),
-          Serialization.instance_from_pickle_string(st))
-    print()
-
-    print("Yaml String")
-    print(type(Serialization.yaml_to_string(cesar)), Serialization.yaml_to_string(cesar))
-    st = Serialization.yaml_to_string(cesar)
-    print(type(Serialization.instance_from_yaml_string(cesar, st)),
-          Serialization.instance_from_yaml_string(cesar, st))
-    print()
-
-    Serialization.json_to_file(cesar, "cesar.json")
-    Serialization.pickle_to_file(cesar, "cesar.pickle")
-    Serialization.yaml_to_file(cesar, "cesar.yaml")
-    print("JSON-->", type(Serialization.instance_from_json_file(cesar, "cesar.json")),
-          Serialization.instance_from_json_file(cesar, "cesar.json"))
-    print("Pickle -->", type(Serialization.instance_from_pickle_file("cesar.pickle")),
-          Serialization.instance_from_pickle_file("cesar.pickle"))
-    print("Yaml -->", type(Serialization.instance_from_yaml_file(cesar, "cesar.yaml")),
-          Serialization.instance_from_yaml_file(cesar, "cesar.yaml"))
