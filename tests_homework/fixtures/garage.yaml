@@ -1,0 +1,11 @@
+Garage:
+  cars:
+  - "Car:\n  car_type: Coupe\n  producer: Chevrolet\n  price: 43976.5\n  number: db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\n\
+    \  mileage: 64728.51\n"
+  - "Car:\n  car_type: Crossover\n  producer: BENTLEY\n  price: 22809.77\n  number:\
+    \ 1154dd04-fca2-4947-8e51-13de5901467d\n  mileage: 24325.23\n"
+  - "Car:\n  car_type: Diesel\n  producer: Buick\n  price: 56415.45\n  number: 6d7f767b-109d-4c29-b41c-74ef51903f08\n\
+    \  mileage: 3885.34\n"
+  places: 5
+  owner: f2b521c8-6d5d-460f-8101-2603a1e7d316
+  town: Rome

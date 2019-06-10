@@ -1,0 +1,27 @@
+Cesar:
+  name: Benia
+  register_id: 199e4987-9428-4bc4-a26b-1645c7c81cf8
+  garages:
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Luxury Car\\n  producer: BMW\\n  price:\
+    \ 78038.71\\n  number: 254b106d-452b-4e4d-989f-9434a69890b7\\n\\\n    \\  mileage:\
+    \ 72005.86\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: Chevrolet\\\
+    n  price: 71032.82\\n  number:\\\n    \\ 43228351-71cf-48c2-88e3-b5d0509fd462\\\
+    n  mileage: 40815.66\\n\"\n  - \"Car:\\n  car_type: Luxury Car\\n  producer: Chery\\\
+    n  price: 27577.73\\n  number:\\\n    \\ 42beba8b-e1e4-4d4c-bb88-46f0ef50bf03\\\
+    n  mileage: 84138.02\\n\"\n  places: 5\n  owner: 428cd5f1-7646-4016-8e2d-ec26d151fe9b\n\
+    \  town: Kiev\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Coupe\\n  producer: Buick\\n  price:\
+    \ 38621.58\\n  number: e359ed2d-60dd-42c4-a761-8d5634da60ed\\n\\\n    \\  mileage:\
+    \ 7703.62\\n\"\n  - \"Car:\\n  car_type: Sports Car\\n  producer: Ford\\n  price:\
+    \ 4948.44\\n  number: cab8988e-d033-4b43-966b-e3af6a6b75e6\\n\\\n    \\  mileage:\
+    \ 58175.29\\n\"\n  - \"Car:\\n  car_type: SUV\\n  producer: Ford\\n  price: 32144.82\\\
+    n  number: f11a06f6-912c-4adc-99a3-16f3883d1f4c\\n\\\n    \\  mileage: 27458.44\\\
+    n\"\n  places: 5\n  owner: 98462db8-87c8-4d5a-9f2a-f879187f0e79\n  town: Berlin\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Luxury Car\\n  producer: Dodge\\n\
+    \  price: 14991.98\\n  number:\\\n    \\ 5c9c7c32-3b41-42e0-9a21-103a1d72730f\\\
+    n  mileage: 67796.76\\n\"\n  - \"Car:\\n  car_type: Diesel\\n  producer: Chery\\\
+    n  price: 80906.93\\n  number: 9cb7fef1-9873-4dbc-8984-4db02011d97b\\n\\\n   \
+    \ \\  mileage: 25090.87\\n\"\n  - \"Car:\\n  car_type: Coupe\\n  producer: Lamborghini\\\
+    n  price: 78447.6\\n  number:\\\n    \\ 5add9532-516a-4d97-a381-dddc16259954\\\
+    n  mileage: 76750.82\\n\"\n  places: 5\n  owner: 39dd22de-5a0c-462f-a13e-24aef4e447f0\n\
+    \  town: Rome\n"

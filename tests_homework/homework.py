@@ -22,7 +22,7 @@ import pickle
 import codecs
 from ruamel.yaml import YAML
 from ruamel.yaml.compat import StringIO
-from serialization.constants import TOWNS, CARS_TYPES, CARS_PRODUCER
+from constants import TOWNS, CARS_TYPES, CARS_PRODUCER, CESAR_NAME
 
 
 class MyYAML(YAML):
@@ -165,10 +165,14 @@ class Car:
         self.number = uuid.uuid4()
 
     def __lt__(self, other: Car):
-        return self.price < other.price
+        self_param_list = [self.price, str(self.number), self.mileage, self.producer, self.car_type]
+        other_param_list = [other.price, str(other.number), other.mileage, other.producer, other.car_type]
+        return self_param_list < other_param_list
 
     def __eq__(self, other: Car):
-        return self.price == other.price
+        self_param_list = [self.price, str(self.number), self.mileage, self.producer, self.car_type]
+        other_param_list = [other.price, str(other.number), other.mileage, other.producer, other.car_type]
+        return self_param_list == other_param_list
 
 
 class Garage:
@@ -317,27 +321,38 @@ class Cesar:
     def __lt__(self, other: Cesar):
         return self.hit_hat() < other.hit_hat()
 
-
-if __name__ == "__main__":
-
-    cesar_id = uuid.uuid4()
-
-    car = Car(
+def data_init_car():
+    return Car(
         car_type=random.choice(CARS_TYPES),
         producer=random.choice(CARS_PRODUCER),
         price=round(random.uniform(1, 100000), 2),
         mileage=round(random.uniform(1, 100000), 2)
     )
 
-    garage = Garage(
-        cars=[car, car],
+
+def data_init_garage():
+    cesar_id = uuid.uuid4()
+    return Garage(
+        cars=[data_init_car(), data_init_car(), data_init_car()],
         town=random.choice(TOWNS),
         places=5,
         owner=cesar_id
     )
 
-    cesar = Cesar('cesar', [garage, garage])
 
+def date_init_cesar():
+    return Cesar(random.choice(CESAR_NAME), [data_init_garage(), data_init_garage(), data_init_garage()])
+
+
+if __name__ == "__main__":
+
+    cesar_id = uuid.uuid4()
+
+    car = data_init_car()
+
+    garage = data_init_garage()
+
+    cesar = date_init_cesar()
     print("Car test ==============================================================================")
     print("Json String")
     print(type(Serialization.json_to_string(car)), Serialization.json_to_string(car))

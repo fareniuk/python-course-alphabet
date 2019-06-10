@@ -1,9 +1,0 @@
-{
-    "cars": [
-        "{\"car_type\": \"Van\", \"producer\": \"Lamborghini\", \"price\": 7423.89, \"number\": \"463af4e2-8331-46d1-93bc-0ff9910fa4e7\", \"mileage\": 18867.3}",
-        "{\"car_type\": \"Van\", \"producer\": \"Lamborghini\", \"price\": 7423.89, \"number\": \"463af4e2-8331-46d1-93bc-0ff9910fa4e7\", \"mileage\": 18867.3}"
-    ],
-    "places": 5,
-    "owner": "96ecc81d-2f21-4c36-b7d4-1c3f0ce46714",
-    "town": "Paris"
-}
