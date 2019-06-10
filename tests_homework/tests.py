@@ -1,5 +1,5 @@
 import unittest
-
+from homework import Car, Cesar, Garage
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
