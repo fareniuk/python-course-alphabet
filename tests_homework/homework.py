@@ -232,7 +232,7 @@ class Garage:
         if len(self.cars) < self.places:
             self.cars.append(c)
         else:
-            raise Exception('No place available in ', self)
+            raise Exception("No place available in ", self)
 
     def remove(self, c):
         if c in self.cars:

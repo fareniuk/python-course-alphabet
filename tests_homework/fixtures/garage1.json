@@ -1,0 +1,10 @@
+{
+    "cars": [
+        "{\"car_type\": \"Diesel\", \"producer\": \"Ford\", \"price\": 83179.25, \"number\": \"11c0eb72-1694-4ea2-a8ff-5778e429b18c\", \"mileage\": 37291.26}",
+        "{\"car_type\": \"Wagon\", \"producer\": \"Dodge\", \"price\": 50070.0, \"number\": \"7063b400-dd3a-4026-baf3-f58d7b18f39b\", \"mileage\": 61516.24}",
+        "{\"car_type\": \"Truck\", \"producer\": \"Chevrolet\", \"price\": 60250.58, \"number\": \"f52945e7-dd9e-4059-ba71-ec8c9fb6d566\", \"mileage\": 65270.69}"
+    ],
+    "places": 5,
+    "owner": "8b3b1737-2fdc-4a5d-bbc5-4b1124ae2415",
+    "town": "Amsterdam"
+}

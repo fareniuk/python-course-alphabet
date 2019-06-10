@@ -1,0 +1,10 @@
+{
+    "cars": [
+        "{\"car_type\": \"Luxury Car\", \"producer\": \"Buick\", \"price\": 15060.0, \"number\": \"91c3bed3-f769-4ee3-8b5f-8c63987b2bbf\", \"mileage\": 43738.51}",
+        "{\"car_type\": \"Sedan\", \"producer\": \"Buick\", \"price\": 18442.29, \"number\": \"889efe41-5f93-4cbd-af0a-d9ff5dca70a9\", \"mileage\": 26300.37}",
+        "{\"car_type\": \"Truck\", \"producer\": \"Chery\", \"price\": 90780.15, \"number\": \"2921688e-8480-43b1-83c4-6623519336ec\", \"mileage\": 99528.13}"
+    ],
+    "places": 5,
+    "owner": "8bc7cdb8-1a68-4211-9d18-0b57ae992567",
+    "town": "Kiev"
+}
