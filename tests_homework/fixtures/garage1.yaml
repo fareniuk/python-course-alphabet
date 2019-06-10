@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Diesel\n  producer: Ford\n  price: 83179.25\n  number: 11c0eb72-1694-4ea2-a8ff-5778e429b18c\n\
-    \  mileage: 37291.26\n"
-  - "Car:\n  car_type: Wagon\n  producer: Dodge\n  price: 50070.0\n  number: 7063b400-dd3a-4026-baf3-f58d7b18f39b\n\
-    \  mileage: 61516.24\n"
-  - "Car:\n  car_type: Truck\n  producer: Chevrolet\n  price: 60250.58\n  number:\
-    \ f52945e7-dd9e-4059-ba71-ec8c9fb6d566\n  mileage: 65270.69\n"
+  - "Car:\n  car_type: Crossover\n  producer: Buick\n  price: 76004.49\n  number:\
+    \ f6887385-7fac-466f-b61e-bad04b87e857\n  mileage: 4527.47\n"
+  - "Car:\n  car_type: Sports Car\n  producer: BMW\n  price: 22555.73\n  number: c63f92b1-d583-4638-a5f0-34c479044e2d\n\
+    \  mileage: 58342.59\n"
+  - "Car:\n  car_type: SUV\n  producer: Chevrolet\n  price: 59160.28\n  number: 9d7d8ed1-8420-4413-acb6-636cbd38fb0a\n\
+    \  mileage: 46948.37\n"
   places: 5
-  owner: 8b3b1737-2fdc-4a5d-bbc5-4b1124ae2415
-  town: Amsterdam
+  owner: 6e520f76-5c13-4099-bbbc-04aaad469388
+  town: Paris

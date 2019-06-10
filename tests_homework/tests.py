@@ -109,24 +109,13 @@ class GarageTestCase(unittest.TestCase):
         self.assertEqual(garage, garage_yaml)
 
     def test_hit_hat(self):
-        car_data = [
-            "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
-            "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
-            "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
-        ]
-        car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
-        garage = Garage("Rome", car_list, 5, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+        garage = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
         self.assertEqual(garage.hit_hat(), 123201.72)
         self.assertNotEqual(garage.hit_hat(), 123687768)
 
     def test_add_car_to_garage(self):
-        car_data = [
-            "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
-            "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
-            "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
-        ]
-        car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
-        garage = Garage("Rome", car_list, 3, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+        garage = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
+        garage.places = len(garage.cars)
         car = data_init_car()
         with self.assertRaises(Exception, msg="Should raise: No place available error") as context:
             garage.add(car)
@@ -136,18 +125,12 @@ class GarageTestCase(unittest.TestCase):
         self.assertIn(car, garage.cars)
 
     def test_remove_car_from_garage(self):
-        car_data = [
-            "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
-            "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
-            "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
-        ]
-        car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
-        garage = Garage("Rome", car_list, 5, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+        garage = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
         car_raise = data_init_car()
-        car_valid = car_list[1]
+        car_valid = garage.cars[1]
         with self.assertRaises(Exception, msg="Should raise: No car in garage error") as context:
             garage.remove(car_raise)
-            self.assertTrue(f"Car: '{car}' removed from garage" in context.exception.args)
+            self.assertTrue(f"Car: '{car_raise}' removed from garage" in context.exception.args)
         garage.remove(car_valid)
         self.assertNotIn(car_valid, garage.cars)
 
