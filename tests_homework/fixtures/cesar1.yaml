@@ -1,27 +1,28 @@
 Cesar:
-  name: Backa
-  register_id: 50081f34-e2f0-4981-8ea9-d378694a3ee5
+  name: Benia
+  register_id: c6d010c0-d3d1-4bf8-96e5-c1ca649d9640
   garages:
-  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Diesel\\n  producer: Chery\\n  price:\
-    \ 12296.44\\n  number: 334d4e93-5ef7-48ae-a4d1-367b56445629\\n\\\n    \\  mileage:\
-    \ 55805.24\\n\"\n  - \"Car:\\n  car_type: SUV\\n  producer: BENTLEY\\n  price:\
-    \ 93644.21\\n  number: c46fe25a-5339-440a-bd4a-b991a3cd39ca\\n\\\n    \\  mileage:\
-    \ 85866.29\\n\"\n  - \"Car:\\n  car_type: Van\\n  producer: Dodge\\n  price: 95641.61\\\
-    n  number: 2dec9b3f-b085-4369-b8ce-6ec6fa6f39b1\\n\\\n    \\  mileage: 73856.1\\\
-    n\"\n  places: 5\n  owner: 8cc3db46-9948-4a4e-9c0a-f3ba4b4c7296\n  town: Rome\n"
-  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Sedan\\n  producer: Lamborghini\\\
-    n  price: 99741.27\\n  number:\\\n    \\ 493ac800-64ab-4aa5-a0d8-0cdc8bf814fe\\\
-    n  mileage: 28243.81\\n\"\n  - \"Car:\\n  car_type: Luxury Car\\n  producer: Bugatti\\\
-    n  price: 90532.53\\n  number:\\\n    \\ 5eb50164-ee3b-4784-97a9-5b9877c5276c\\\
-    n  mileage: 94355.51\\n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: BENTLEY\\\
-    n  price: 17359.23\\n  number: be2dd439-4430-46f5-8032-aae8c2c2ea38\\n\\\n   \
-    \ \\  mileage: 47005.97\\n\"\n  places: 5\n  owner: 17d1d9f8-fb67-42d5-8747-d519ce711a45\n\
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Wagon\\n  producer: Chery\\n  price:\
+    \ 51708.39\\n  number: e9b069d3-57ee-44b6-accc-ee55fdb297d5\\n\\\n    \\  mileage:\
+    \ 36219.03\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: Ford\\n  price:\
+    \ 43050.0\\n  number: 4b90f581-99da-40a7-90b9-4300504c5bb8\\n\\\n    \\  mileage:\
+    \ 97101.98\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: BMW\\n  price:\
+    \ 9488.05\\n  number: 34b2dab2-bc26-4da2-810a-d2f4534bdc1d\\n\\\n    \\  mileage:\
+    \ 89652.38\\n\"\n  places: 5\n  owner: 55524161-0339-43d6-a395-d342bbe4cfae\n\
     \  town: Berlin\n"
-  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Van\\n  producer: Buick\\n  price:\
-    \ 96241.04\\n  number: e05a3725-1d64-4b8f-9e90-677dcceda7e9\\n\\\n    \\  mileage:\
-    \ 98126.5\\n\"\n  - \"Car:\\n  car_type: Coupe\\n  producer: Buick\\n  price:\
-    \ 19181.0\\n  number: 0c5ae14b-3803-4ecd-bab7-0a24b3599a74\\n\\\n    \\  mileage:\
-    \ 16311.36\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: Bugatti\\n \
-    \ price: 81181.34\\n  number:\\\n    \\ e8d8ab36-011b-43eb-b20d-3e8445924467\\\
-    n  mileage: 25789.28\\n\"\n  places: 5\n  owner: 765b7f24-5da6-49eb-81be-66febcd6f218\n\
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Truck\\n  producer: BENTLEY\\n  price:\
+    \ 47556.6\\n  number: 69234a7f-b76d-4f98-a6d0-500a8ba0b589\\n\\\n    \\  mileage:\
+    \ 65157.16\\n\"\n  - \"Car:\\n  car_type: Wagon\\n  producer: BENTLEY\\n  price:\
+    \ 30643.68\\n  number: 0ae71218-b6b0-47f9-b6aa-505701f6e86b\\n\\\n    \\  mileage:\
+    \ 43527.35\\n\"\n  - \"Car:\\n  car_type: Crossover\\n  producer: Ford\\n  price:\
+    \ 65434.12\\n  number: 851bd74e-a121-4980-82e5-f4ae5ed96fad\\n\\\n    \\  mileage:\
+    \ 13336.94\\n\"\n  places: 5\n  owner: f8c6673b-dedd-4416-a485-90779962e34d\n\
+    \  town: Rome\n"
+  - "Garage:\n  cars:\n  - \"Car:\\n  car_type: Crossover\\n  producer: Chery\\n \
+    \ price: 13253.35\\n  number:\\\n    \\ 7019ac72-3542-4900-92eb-61956f5bedc7\\\
+    n  mileage: 28143.47\\n\"\n  - \"Car:\\n  car_type: Truck\\n  producer: Lamborghini\\\
+    n  price: 7490.23\\n  number:\\\n    \\ e416291f-e91e-43bf-8e9b-9700fcb01882\\\
+    n  mileage: 5889.95\\n\"\n  - \"Car:\\n  car_type: Sports Car\\n  producer: Chery\\\
+    n  price: 21358.98\\n  number:\\\n    \\ 197a04b7-f48e-4106-8ff2-4f76584c51d7\\\
+    n  mileage: 93823.38\\n\"\n  places: 5\n  owner: f93d1472-37c9-4c0e-b229-b8359425ac64\n\
     \  town: Kiev\n"
