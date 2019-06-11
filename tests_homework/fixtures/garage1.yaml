@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Crossover\n  producer: Chery\n  price: 96927.83\n  number:\
-    \ 111574cd-4305-494e-b204-d1e415c9d593\n  mileage: 62080.61\n"
-  - "Car:\n  car_type: Luxury Car\n  producer: Buick\n  price: 19842.61\n  number:\
-    \ 7027d1f9-9ca7-40e2-840c-271160b0b9f2\n  mileage: 62098.8\n"
-  - "Car:\n  car_type: Coupe\n  producer: Bugatti\n  price: 40587.54\n  number: a1a95a9e-28de-4f93-970b-a36089768f49\n\
-    \  mileage: 78055.4\n"
+  - "Car:\n  car_type: Wagon\n  producer: Ford\n  price: 61839.61\n  number: e8b6b7f8-c63e-45de-a0bb-a9167ec43c7c\n\
+    \  mileage: 19811.61\n"
+  - "Car:\n  car_type: Luxury Car\n  producer: Lamborghini\n  price: 48850.45\n  number:\
+    \ d2d39fa7-2a66-4ee2-9877-0ddd880288af\n  mileage: 65023.1\n"
+  - "Car:\n  car_type: Wagon\n  producer: Ford\n  price: 64415.9\n  number: 7ba99e7f-0e0d-4059-aa22-d5e6865af151\n\
+    \  mileage: 73565.98\n"
   places: 5
-  owner: 27fc9dfe-7f09-4825-b401-0c84818347d0
-  town: Kiev
+  owner: b3801f9d-14f1-43c8-95f8-f95ca2a1adbe
+  town: Amsterdam

@@ -331,8 +331,6 @@ class Cesar:
         return self.hit_hat() == other.hit_hat()
 
     def equal(self, other: Cesar):
-        self_list = [self.name, self.garages, self.register_id]
-        other_list = [other.name, self.garages, self.register_id]
         res = True
         if (self.name != other.name) or (self.register_id != other.register_id):
             res = False
