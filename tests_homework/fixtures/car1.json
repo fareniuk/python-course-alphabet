@@ -1,7 +1,7 @@
 {
-    "car_type": "SUV",
-    "producer": "Chevrolet",
-    "price": 48077.24,
-    "number": "10c3aa18-f5b0-4513-b886-3e7f5e977bf9",
-    "mileage": 61709.17
+    "car_type": "Sedan",
+    "producer": "Bugatti",
+    "price": 68025.09,
+    "number": "ceaa1276-138f-4ea1-938b-8e8f5bac1afe",
+    "mileage": 5994.71
 }

@@ -2,6 +2,7 @@ import unittest
 import random
 import uuid
 import logging
+from time import sleep
 from testfixtures import LogCapture
 from homework import Car, Cesar, Garage, Serialization
 from constants import TOWNS, CARS_TYPES, CARS_PRODUCER, CESAR_NAME
@@ -46,6 +47,7 @@ class CarTestCase(unittest.TestCase):
 
     def test_not_equal(self):
         car1 = data_init_car()
+        sleep(0.01)
         car2 = data_init_car()
         self.assertNotEqual(car1, car2)
 
@@ -79,6 +81,7 @@ class GarageTestCase(unittest.TestCase):
 
     def test_not_equal(self):
         garage1 = data_init_garage()
+        sleep(0.01)
         garage2 = data_init_garage()
         self.assertNotEqual(garage1, garage2)
 
@@ -144,6 +147,7 @@ class CesarTestCase(unittest.TestCase):
 
     def test_not_equal(self):
         cesar1 = date_init_cesar()
+        sleep(0.01)
         cesar2 = date_init_cesar()
         self.assertFalse(cesar1.equal(cesar2))
 
