@@ -1,6 +1,6 @@
 Car:
-  car_type: Coupe
-  producer: Ford
-  price: 87186.52
-  number: d0b9b9d1-30a2-47e0-a4da-b1833486b740
-  mileage: 55311.95
+  car_type: Luxury Car
+  producer: Lamborghini
+  price: 39562.95
+  number: eda8b6f6-fc44-46d8-92e5-a75330d567e7
+  mileage: 93466.84

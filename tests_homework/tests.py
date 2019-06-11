@@ -46,7 +46,7 @@ class CarTestCase(unittest.TestCase):
 
     def test_not_equal(self):
         car1 = data_init_car()
-        car2 = Serialization.instance_from_json_file(Car, "fixtures/car.json")
+        car2 = data_init_car()
         self.assertNotEqual(car1, car2)
 
     def test_serialization(self):
@@ -79,7 +79,7 @@ class GarageTestCase(unittest.TestCase):
 
     def test_not_equal(self):
         garage1 = data_init_garage()
-        garage2 = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
+        garage2 = data_init_garage()
         self.assertNotEqual(garage1, garage2)
 
     def test_serialization(self):
@@ -144,7 +144,7 @@ class CesarTestCase(unittest.TestCase):
 
     def test_not_equal(self):
         cesar1 = date_init_cesar()
-        cesar2 = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        cesar2 = date_init_cesar()
         self.assertFalse(cesar1.equal(cesar2))
 
     def test_serialization(self):

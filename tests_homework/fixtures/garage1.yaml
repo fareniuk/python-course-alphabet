@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: SUV\n  producer: Bugatti\n  price: 75876.55\n  number: 44bcedef-ecfb-4f7e-8d8d-fa5c8b0a1a1e\n\
-    \  mileage: 86737.41\n"
-  - "Car:\n  car_type: Luxury Car\n  producer: Ford\n  price: 71215.77\n  number:\
-    \ fe2c6a28-a165-4f99-9924-976e754431d3\n  mileage: 45639.04\n"
-  - "Car:\n  car_type: Sedan\n  producer: BMW\n  price: 27201.69\n  number: 17b64f77-6874-4d95-8b44-72852fcfa642\n\
-    \  mileage: 83321.64\n"
+  - "Car:\n  car_type: Crossover\n  producer: Chery\n  price: 96927.83\n  number:\
+    \ 111574cd-4305-494e-b204-d1e415c9d593\n  mileage: 62080.61\n"
+  - "Car:\n  car_type: Luxury Car\n  producer: Buick\n  price: 19842.61\n  number:\
+    \ 7027d1f9-9ca7-40e2-840c-271160b0b9f2\n  mileage: 62098.8\n"
+  - "Car:\n  car_type: Coupe\n  producer: Bugatti\n  price: 40587.54\n  number: a1a95a9e-28de-4f93-970b-a36089768f49\n\
+    \  mileage: 78055.4\n"
   places: 5
-  owner: 8ff71cf3-9c98-4774-93ca-9a0dd38bbff4
-  town: Prague
+  owner: 27fc9dfe-7f09-4825-b401-0c84818347d0
+  town: Kiev

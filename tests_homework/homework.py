@@ -333,7 +333,12 @@ class Cesar:
     def equal(self, other: Cesar):
         self_list = [self.name, self.garages, self.register_id]
         other_list = [other.name, self.garages, self.register_id]
-        return self_list == other_list
+        res = True
+        if (self.name != other.name) or (self.register_id != other.register_id):
+            res = False
+        elif (len(self.garages) != len(other.garages)) or (self.garages != other.garages):
+            res = False
+        return res
 
     def __lt__(self, other: Cesar):
         return self.hit_hat() < other.hit_hat()
