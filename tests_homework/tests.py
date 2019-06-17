@@ -19,7 +19,7 @@ def data_init_car():
 def data_init_garage():
     cesar_id = uuid.uuid4()
     return Garage(
-        cars=[data_init_car(), data_init_car(), data_init_car()],
+        cars=3 * [data_init_car()],
         town=random.choice(TOWNS),
         places=5,
         owner=cesar_id
@@ -27,7 +27,7 @@ def data_init_garage():
 
 
 def date_init_cesar():
-    return Cesar(random.choice(CESAR_NAME), [data_init_garage(), data_init_garage(), data_init_garage()])
+    return Cesar(random.choice(CESAR_NAME), 3 * [data_init_garage()])
 
 
 class CarTestCase(unittest.TestCase):
@@ -200,7 +200,10 @@ class CesarTestCase(unittest.TestCase):
         car = data_init_car()
 
         cesar.add_car(car)
-        self.assertIn(car, [car for garage in [garage.cars for garage in cesar.garages]])
+        car_not_exist = data_init_car()
+        # self.assertIn(car, [car for garage in [garage.cars for garage in cesar.garages]])
+        self.assertIn(car, [car for garage in cesar.garages])
+        self.assertNotIn(car_not_exist, [car for garage in cesar.garages])
 
         with LogCapture(level=logging.WARNING) as logs:
             cesar.add_car(car_exist, cesar.garages[0])

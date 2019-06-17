@@ -1,6 +1,6 @@
 Car:
-  car_type: Coupe
-  producer: Ford
-  price: 33829.14
-  number: 7b145ab1-b6c1-4de8-8214-1f7f6b716e25
-  mileage: 75653.44
+  car_type: Wagon
+  producer: BENTLEY
+  price: 77939.15
+  number: 9c3be952-8563-4f97-8254-e7f01797d4a1
+  mileage: 58832.24

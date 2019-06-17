@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Wagon\n  producer: Ford\n  price: 61839.61\n  number: e8b6b7f8-c63e-45de-a0bb-a9167ec43c7c\n\
-    \  mileage: 19811.61\n"
-  - "Car:\n  car_type: Luxury Car\n  producer: Lamborghini\n  price: 48850.45\n  number:\
-    \ d2d39fa7-2a66-4ee2-9877-0ddd880288af\n  mileage: 65023.1\n"
-  - "Car:\n  car_type: Wagon\n  producer: Ford\n  price: 64415.9\n  number: 7ba99e7f-0e0d-4059-aa22-d5e6865af151\n\
-    \  mileage: 73565.98\n"
+  - "Car:\n  car_type: Crossover\n  producer: Ford\n  price: 21753.9\n  number: 79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\n\
+    \  mileage: 74136.26\n"
+  - "Car:\n  car_type: Crossover\n  producer: Ford\n  price: 21753.9\n  number: 79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\n\
+    \  mileage: 74136.26\n"
+  - "Car:\n  car_type: Crossover\n  producer: Ford\n  price: 21753.9\n  number: 79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\n\
+    \  mileage: 74136.26\n"
   places: 5
-  owner: b3801f9d-14f1-43c8-95f8-f95ca2a1adbe
+  owner: 5cfb55af-b9a5-47ee-b9f7-072bffe41183
   town: Amsterdam
