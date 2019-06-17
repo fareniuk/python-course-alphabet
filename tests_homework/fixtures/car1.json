@@ -1,7 +1,7 @@
 {
-    "car_type": "Wagon",
-    "producer": "BENTLEY",
-    "price": 77939.15,
-    "number": "9c3be952-8563-4f97-8254-e7f01797d4a1",
-    "mileage": 58832.24
+    "car_type": "Diesel",
+    "producer": "Dodge",
+    "price": 54406.15,
+    "number": "6da4720c-b543-49ca-a477-9775395881e0",
+    "mileage": 32426.37
 }

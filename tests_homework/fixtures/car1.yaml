@@ -1,6 +1,6 @@
 Car:
-  car_type: Wagon
-  producer: BENTLEY
-  price: 77939.15
-  number: 9c3be952-8563-4f97-8254-e7f01797d4a1
-  mileage: 58832.24
+  car_type: Truck
+  producer: BMW
+  price: 65741.28
+  number: cd7cf820-e206-464c-94a2-1e11709e91aa
+  mileage: 94952.01

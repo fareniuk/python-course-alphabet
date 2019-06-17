@@ -1,11 +1,11 @@
 Garage:
   cars:
-  - "Car:\n  car_type: Crossover\n  producer: Ford\n  price: 21753.9\n  number: 79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\n\
-    \  mileage: 74136.26\n"
-  - "Car:\n  car_type: Crossover\n  producer: Ford\n  price: 21753.9\n  number: 79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\n\
-    \  mileage: 74136.26\n"
-  - "Car:\n  car_type: Crossover\n  producer: Ford\n  price: 21753.9\n  number: 79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\n\
-    \  mileage: 74136.26\n"
+  - "Car:\n  car_type: Diesel\n  producer: Dodge\n  price: 36970.61\n  number: a27c3de1-eddb-44c6-96e4-9959dc089230\n\
+    \  mileage: 73566.57\n"
+  - "Car:\n  car_type: Diesel\n  producer: Dodge\n  price: 36970.61\n  number: a27c3de1-eddb-44c6-96e4-9959dc089230\n\
+    \  mileage: 73566.57\n"
+  - "Car:\n  car_type: Diesel\n  producer: Dodge\n  price: 36970.61\n  number: a27c3de1-eddb-44c6-96e4-9959dc089230\n\
+    \  mileage: 73566.57\n"
   places: 5
-  owner: 5cfb55af-b9a5-47ee-b9f7-072bffe41183
-  town: Amsterdam
+  owner: b65adc91-0b34-4b18-96ab-13852be27a85
+  town: Kiev

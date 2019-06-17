@@ -30,6 +30,30 @@ def date_init_cesar():
     return Cesar(random.choice(CESAR_NAME), 3 * [data_init_garage()])
 
 
+def data_des_car():
+    return Car(55523.42, "Coupe", "Buick", 13897.37, "b50d37e5-6a89-45da-a565-0607f72c7e72")
+
+
+def data_des_garage():
+    car_data = [
+        "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
+        "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
+        "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
+    ]
+    car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
+    return Garage("Rome", car_list, 5, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+
+
+def data_des_cesar():
+    garage_data = [
+        "{\"cars\": [\"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"BMW\\\", \\\"price\\\": 78038.71, \\\"number\\\": \\\"254b106d-452b-4e4d-989f-9434a69890b7\\\", \\\"mileage\\\": 72005.86}\", \"{\\\"car_type\\\": \\\"Crossover\\\", \\\"producer\\\": \\\"Chevrolet\\\", \\\"price\\\": 71032.82, \\\"number\\\": \\\"43228351-71cf-48c2-88e3-b5d0509fd462\\\", \\\"mileage\\\": 40815.66}\", \"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"Chery\\\", \\\"price\\\": 27577.73, \\\"number\\\": \\\"42beba8b-e1e4-4d4c-bb88-46f0ef50bf03\\\", \\\"mileage\\\": 84138.02}\"], \"places\": 5, \"owner\": \"428cd5f1-7646-4016-8e2d-ec26d151fe9b\", \"town\": \"Kiev\"}",
+        "{\"cars\": [\"{\\\"car_type\\\": \\\"Coupe\\\", \\\"producer\\\": \\\"Buick\\\", \\\"price\\\": 38621.58, \\\"number\\\": \\\"e359ed2d-60dd-42c4-a761-8d5634da60ed\\\", \\\"mileage\\\": 7703.62}\", \"{\\\"car_type\\\": \\\"Sports Car\\\", \\\"producer\\\": \\\"Ford\\\", \\\"price\\\": 4948.44, \\\"number\\\": \\\"cab8988e-d033-4b43-966b-e3af6a6b75e6\\\", \\\"mileage\\\": 58175.29}\", \"{\\\"car_type\\\": \\\"SUV\\\", \\\"producer\\\": \\\"Ford\\\", \\\"price\\\": 32144.82, \\\"number\\\": \\\"f11a06f6-912c-4adc-99a3-16f3883d1f4c\\\", \\\"mileage\\\": 27458.44}\"], \"places\": 5, \"owner\": \"98462db8-87c8-4d5a-9f2a-f879187f0e79\", \"town\": \"Berlin\"}",
+        "{\"cars\": [\"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"Dodge\\\", \\\"price\\\": 14991.98, \\\"number\\\": \\\"5c9c7c32-3b41-42e0-9a21-103a1d72730f\\\", \\\"mileage\\\": 67796.76}\", \"{\\\"car_type\\\": \\\"Diesel\\\", \\\"producer\\\": \\\"Chery\\\", \\\"price\\\": 80906.93, \\\"number\\\": \\\"9cb7fef1-9873-4dbc-8984-4db02011d97b\\\", \\\"mileage\\\": 25090.87}\", \"{\\\"car_type\\\": \\\"Coupe\\\", \\\"producer\\\": \\\"Lamborghini\\\", \\\"price\\\": 78447.6, \\\"number\\\": \\\"5add9532-516a-4d97-a381-dddc16259954\\\", \\\"mileage\\\": 76750.82}\"], \"places\": 5, \"owner\": \"39dd22de-5a0c-462f-a13e-24aef4e447f0\", \"town\": \"Rome\"}"
+    ]
+    garage_list = [Serialization.instance_from_json_string(Garage, c) for c in garage_data]
+    return Cesar("Benia", garage_list, "199e4987-9428-4bc4-a26b-1645c7c81cf8")
+
+
 class CarTestCase(unittest.TestCase):
 
     def test_change_number(self):
@@ -49,26 +73,36 @@ class CarTestCase(unittest.TestCase):
         car2 = data_init_car()
         self.assertNotEqual(car1, car2)
 
-    def test_serialization(self):
+    def test_serialization_json(self):
         car = data_init_car()
         Serialization.json_to_file(car, "fixtures/car1.json")
-        Serialization.pickle_to_file(car, "fixtures/car1.pickle")
-        Serialization.yaml_to_file(car, "fixtures/car1.yaml")
         car_json = Serialization.instance_from_json_file(Car, "fixtures/car1.json")
-        car_pickle = Serialization.instance_from_pickle_file("fixtures/car1.pickle")
-        car_yaml = Serialization.instance_from_yaml_file(Car, "fixtures/car1.yaml")
         self.assertEqual(car, car_json)
+
+    def test_serialization_pickle(self):
+        car = data_init_car()
+        Serialization.pickle_to_file(car, "fixtures/car1.pickle")
+        car_pickle = Serialization.instance_from_pickle_file("fixtures/car1.pickle")
         self.assertEqual(car, car_pickle)
+
+    def test_serialization_yaml(self):
+        car = data_init_car()
+        Serialization.yaml_to_file(car, "fixtures/car1.yaml")
+        car_yaml = Serialization.instance_from_yaml_file(Car, "fixtures/car1.yaml")
         self.assertEqual(car, car_yaml)
 
-    def test_deserialization(self):
-        car = Car(55523.42, "Coupe", "Buick", 13897.37, "b50d37e5-6a89-45da-a565-0607f72c7e72")
+    def test_deserialization_json(self):
         car_json = Serialization.instance_from_json_file(Car, "fixtures/car.json")
+        self.assertEqual(data_des_car(), car_json)
+
+    def test_deserialization_pickle(self):
         car_pickle = Serialization.instance_from_pickle_file("fixtures/car.pickle")
+        self.assertEqual(data_des_car(), car_pickle)
+
+    def test_deserialization_yaml(self):
         car_yaml = Serialization.instance_from_yaml_file(Car, "fixtures/car.yaml")
-        self.assertEqual(car, car_json)
-        self.assertEqual(car, car_pickle)
-        self.assertEqual(car, car_yaml)
+        self.assertEqual(data_des_car(), car_yaml)
+
 
 class GarageTestCase(unittest.TestCase):
 
@@ -82,32 +116,36 @@ class GarageTestCase(unittest.TestCase):
         garage2 = data_init_garage()
         self.assertNotEqual(garage1, garage2)
 
-    def test_serialization(self):
+    def test_serialization_json(self):
         garage = data_init_garage()
         Serialization.json_to_file(garage, "fixtures/garage1.json")
-        Serialization.pickle_to_file(garage, "fixtures/garage1.pickle")
-        Serialization.yaml_to_file(garage, "fixtures/garage1.yaml")
         garage_json = Serialization.instance_from_json_file(Garage, "fixtures/garage1.json")
-        garage_pickle = Serialization.instance_from_pickle_file("fixtures/garage1.pickle")
-        garage_yaml = Serialization.instance_from_yaml_file(Garage, "fixtures/garage1.yaml")
         self.assertEqual(garage, garage_json)
+
+    def test_serialization_pickle(self):
+        garage = data_init_garage()
+        Serialization.pickle_to_file(garage, "fixtures/garage1.pickle")
+        garage_pickle = Serialization.instance_from_pickle_file("fixtures/garage1.pickle")
         self.assertEqual(garage, garage_pickle)
+
+    def test_serialization_yaml(self):
+        garage = data_init_garage()
+        Serialization.yaml_to_file(garage, "fixtures/garage1.yaml")
+        garage_yaml = Serialization.instance_from_yaml_file(Garage, "fixtures/garage1.yaml")
         self.assertEqual(garage, garage_yaml)
 
-    def test_deserialization(self):
-        car_data = [
-        "{\"car_type\": \"Coupe\", \"producer\": \"Chevrolet\", \"price\": 43976.5, \"number\": \"db85d5f2-5cf0-40b3-b7c4-26bd9b2df68e\", \"mileage\": 64728.51}",
-        "{\"car_type\": \"Crossover\", \"producer\": \"BENTLEY\", \"price\": 22809.77, \"number\": \"1154dd04-fca2-4947-8e51-13de5901467d\", \"mileage\": 24325.23}",
-        "{\"car_type\": \"Diesel\", \"producer\": \"Buick\", \"price\": 56415.45, \"number\": \"6d7f767b-109d-4c29-b41c-74ef51903f08\", \"mileage\": 3885.34}"
-        ]
-        car_list = [Serialization.instance_from_json_string(Car, c) for c in car_data]
-        garage = Garage("Rome", car_list, 5, "f2b521c8-6d5d-460f-8101-2603a1e7d316")
+    def test_deserialization_json(self):
         garage_json = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
+        self.assertEqual(data_des_garage(), garage_json)
+
+    def test_deserialization_pickle(self):
         garage_pickle = Serialization.instance_from_pickle_file("fixtures/garage.pickle")
+        self.assertEqual(data_des_garage(), garage_pickle)
+
+    def test_deserialization_yaml(self):
         garage_yaml = Serialization.instance_from_yaml_file(Garage, "fixtures/garage.yaml")
-        self.assertEqual(garage, garage_json)
-        self.assertEqual(garage, garage_pickle)
-        self.assertEqual(garage, garage_yaml)
+        self.assertEqual(data_des_garage(), garage_yaml)
+
 
     def test_hit_hat(self):
         garage = Serialization.instance_from_json_file(Garage, "fixtures/garage.json")
@@ -147,32 +185,35 @@ class CesarTestCase(unittest.TestCase):
         cesar2 = date_init_cesar()
         self.assertFalse(cesar1.equal(cesar2))
 
-    def test_serialization(self):
+    def test_serialization_json(self):
         cesar = date_init_cesar()
         Serialization.json_to_file(cesar, "fixtures/cesar1.json")
-        Serialization.pickle_to_file(cesar, "fixtures/cesar1.pickle")
-        Serialization.yaml_to_file(cesar, "fixtures/cesar1.yaml")
         cesar_json = Serialization.instance_from_json_file(Cesar, "fixtures/cesar1.json")
-        cesar_pickle = Serialization.instance_from_pickle_file("fixtures/cesar1.pickle")
-        cesar_yaml = Serialization.instance_from_yaml_file(Cesar, "fixtures/cesar1.yaml")
         self.assertTrue(cesar.equal(cesar_json))
+
+    def test_serialization_pickle(self):
+        cesar = date_init_cesar()
+        Serialization.pickle_to_file(cesar, "fixtures/cesar1.pickle")
+        cesar_pickle = Serialization.instance_from_pickle_file("fixtures/cesar1.pickle")
         self.assertTrue(cesar.equal(cesar_pickle))
+
+    def test_serialization_yaml(self):
+        cesar = date_init_cesar()
+        Serialization.yaml_to_file(cesar, "fixtures/cesar1.yaml")
+        cesar_yaml = Serialization.instance_from_yaml_file(Cesar, "fixtures/cesar1.yaml")
         self.assertTrue(cesar.equal(cesar_yaml))
 
-    def test_deserialization(self):
-        garage_data = [
-        "{\"cars\": [\"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"BMW\\\", \\\"price\\\": 78038.71, \\\"number\\\": \\\"254b106d-452b-4e4d-989f-9434a69890b7\\\", \\\"mileage\\\": 72005.86}\", \"{\\\"car_type\\\": \\\"Crossover\\\", \\\"producer\\\": \\\"Chevrolet\\\", \\\"price\\\": 71032.82, \\\"number\\\": \\\"43228351-71cf-48c2-88e3-b5d0509fd462\\\", \\\"mileage\\\": 40815.66}\", \"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"Chery\\\", \\\"price\\\": 27577.73, \\\"number\\\": \\\"42beba8b-e1e4-4d4c-bb88-46f0ef50bf03\\\", \\\"mileage\\\": 84138.02}\"], \"places\": 5, \"owner\": \"428cd5f1-7646-4016-8e2d-ec26d151fe9b\", \"town\": \"Kiev\"}",
-        "{\"cars\": [\"{\\\"car_type\\\": \\\"Coupe\\\", \\\"producer\\\": \\\"Buick\\\", \\\"price\\\": 38621.58, \\\"number\\\": \\\"e359ed2d-60dd-42c4-a761-8d5634da60ed\\\", \\\"mileage\\\": 7703.62}\", \"{\\\"car_type\\\": \\\"Sports Car\\\", \\\"producer\\\": \\\"Ford\\\", \\\"price\\\": 4948.44, \\\"number\\\": \\\"cab8988e-d033-4b43-966b-e3af6a6b75e6\\\", \\\"mileage\\\": 58175.29}\", \"{\\\"car_type\\\": \\\"SUV\\\", \\\"producer\\\": \\\"Ford\\\", \\\"price\\\": 32144.82, \\\"number\\\": \\\"f11a06f6-912c-4adc-99a3-16f3883d1f4c\\\", \\\"mileage\\\": 27458.44}\"], \"places\": 5, \"owner\": \"98462db8-87c8-4d5a-9f2a-f879187f0e79\", \"town\": \"Berlin\"}",
-        "{\"cars\": [\"{\\\"car_type\\\": \\\"Luxury Car\\\", \\\"producer\\\": \\\"Dodge\\\", \\\"price\\\": 14991.98, \\\"number\\\": \\\"5c9c7c32-3b41-42e0-9a21-103a1d72730f\\\", \\\"mileage\\\": 67796.76}\", \"{\\\"car_type\\\": \\\"Diesel\\\", \\\"producer\\\": \\\"Chery\\\", \\\"price\\\": 80906.93, \\\"number\\\": \\\"9cb7fef1-9873-4dbc-8984-4db02011d97b\\\", \\\"mileage\\\": 25090.87}\", \"{\\\"car_type\\\": \\\"Coupe\\\", \\\"producer\\\": \\\"Lamborghini\\\", \\\"price\\\": 78447.6, \\\"number\\\": \\\"5add9532-516a-4d97-a381-dddc16259954\\\", \\\"mileage\\\": 76750.82}\"], \"places\": 5, \"owner\": \"39dd22de-5a0c-462f-a13e-24aef4e447f0\", \"town\": \"Rome\"}"
-    ]
-        garage_list = [Serialization.instance_from_json_string(Garage, c) for c in garage_data]
-        cesar = Cesar("Benia", garage_list, "199e4987-9428-4bc4-a26b-1645c7c81cf8")
+    def test_deserialization_json(self):
         cesar_json = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")
+        self.assertTrue(data_des_cesar().equal(cesar_json))
+
+    def test_deserialization_pickle(self):
         cesar_pickle = Serialization.instance_from_pickle_file("fixtures/cesar.pickle")
+        self.assertTrue(data_des_cesar().equal(cesar_pickle))
+
+    def test_deserialization_yaml(self):
         cesar_yaml = Serialization.instance_from_yaml_file(Cesar, "fixtures/cesar.yaml")
-        self.assertTrue(cesar.equal(cesar_json))
-        self.assertTrue(cesar.equal(cesar_pickle))
-        self.assertTrue(cesar.equal(cesar_yaml))
+        self.assertTrue(data_des_cesar().equal(cesar_yaml))
 
     def test_hit_hat(self):
         cesar = Serialization.instance_from_json_file(Cesar, "fixtures/cesar.json")

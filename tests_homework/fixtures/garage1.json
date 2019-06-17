@@ -1,10 +1,10 @@
 {
     "cars": [
-        "{\"car_type\": \"Crossover\", \"producer\": \"Ford\", \"price\": 21753.9, \"number\": \"79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\", \"mileage\": 74136.26}",
-        "{\"car_type\": \"Crossover\", \"producer\": \"Ford\", \"price\": 21753.9, \"number\": \"79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\", \"mileage\": 74136.26}",
-        "{\"car_type\": \"Crossover\", \"producer\": \"Ford\", \"price\": 21753.9, \"number\": \"79ec282e-15dd-40b9-88a1-1b7d5c8cbe2c\", \"mileage\": 74136.26}"
+        "{\"car_type\": \"Sports Car\", \"producer\": \"Dodge\", \"price\": 3667.02, \"number\": \"95baedfb-ace1-44ff-a042-024034ffa376\", \"mileage\": 76758.35}",
+        "{\"car_type\": \"Sports Car\", \"producer\": \"Dodge\", \"price\": 3667.02, \"number\": \"95baedfb-ace1-44ff-a042-024034ffa376\", \"mileage\": 76758.35}",
+        "{\"car_type\": \"Sports Car\", \"producer\": \"Dodge\", \"price\": 3667.02, \"number\": \"95baedfb-ace1-44ff-a042-024034ffa376\", \"mileage\": 76758.35}"
     ],
     "places": 5,
-    "owner": "5cfb55af-b9a5-47ee-b9f7-072bffe41183",
-    "town": "Amsterdam"
+    "owner": "b8270641-54a5-4776-8977-aaebc4da24d4",
+    "town": "London"
 }
